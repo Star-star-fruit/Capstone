@@ -6,11 +6,11 @@ async function quickstart() {
   const client = new language.LanguageServiceClient()
 
   // The text to analyze
-  const text = 'Hello, I am very dissapointed and sad'
+  const text = 'Hello, I am very disappointed and sad'
 
   const document = {
     content: text,
-    type: 'PLAIN_TEXT',
+    type: 'PLAIN_TEXT'
   }
 
   // Detects the sentiment of the text
