@@ -1,6 +1,6 @@
 const router = require('express').Router()
-module.exports = router
 const language = require('@google-cloud/language')
+const {User, Word, Email, Words_InEmail} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -16,3 +16,5 @@ router.get('/', async (req, res, next) => {
     next(error)
   }
 })
+
+module.exports = router
