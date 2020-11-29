@@ -20,6 +20,11 @@ form div {
   display: inline-block;
 }
 
+mark {
+  background-color: yellow;
+  color: inherit;
+}
+
 /* EDITOR STYLES COPIED FROM /node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css */
 
 .rdw-option-wrapper {
