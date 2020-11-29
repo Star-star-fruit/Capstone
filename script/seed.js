@@ -1,15 +1,71 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Email, Word} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
   const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+    User.create({
+      firstName: 'Elisa',
+      lastName: 'Levet',
+      email: 'elisa@hotmail.com',
+      password: '12345!'
+    }),
+    User.create({
+      firstName: 'Stuart',
+      lastName: 'Ruston',
+      email: 'stuart@hotmail.com',
+      password: '123456'
+    })
+  ])
+
+  const emails = await Promise.all([
+    Email.create({
+      email:
+        'Im holding on your rope, got me ten feet off the ground and Im hearing what you say, but I just cant make a sound. You tell me that you need me, then you go and cut me down, but wait. You tell me that youre sorry Did not think I would turn around, and say That it is too late to apologize, its too late I said it is too late to apologize, its too late I would take another chance, take a fall Take a shot for you And I need you like a heart needs a beat But its nothing new, yeah, yeah I loved you with a fire red Now its turning blue, and you say Sorry like the angel heaven let me think was you But Im afraid Its too late to apologize, its too late I said its too late to apologize, its too late, whoa Its too late to apologize, its too late I said its too late to apologize, its too late I said its too late to apologize, yeah I said its too late to apologize, yeah Im holding on your rope, got me ten feet off the ground',
+      count: 2
+    }),
+    Email.create({
+      email:
+        'Hello, its me I was wondering if after all these years you would like to meet To go over everything They say that time is supposed to heal ya But I aint done much healing Hello, can you hear me? Im in California dreaming about who we used to be When we were younger and free Ive forgotten how it felt before the world fell at our feet Theres such a difference between us And a million miles Hello from the other side I mustve called a thousand times To tell you Im sorry For everything that Ive done But when I call you never Seem to be home Hello from the outside At least I can say that Ive tried To tell you Im sorry For breaking your heart But it dont matter, it clearly Doesnt tear you apart anymore Hello, how are you? Its so typical of me to talk about',
+      count: 1
+    })
+  ])
+
+  const words = await Promise.all([
+    Word.create({
+      word: 'sorry'
+    }),
+    Word.create({
+      word: 'expert'
+    }),
+    Word.create({
+      word: 'apologize'
+    }),
+    Word.create({
+      word: 'I believe'
+    }),
+    Word.create({
+      word: 'I feel'
+    }),
+    Word.create({
+      word: 'just'
+    }),
+    Word.create({
+      word: 'possibly'
+    }),
+    Word.create({
+      word: 'kind of'
+    }),
+    Word.create({
+      word: 'it is likely'
+    }),
+    Word.create({
+      word: 'I make sense'
+    })
   ])
 
   console.log(`seeded ${users.length} users`)
