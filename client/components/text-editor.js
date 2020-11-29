@@ -20,8 +20,9 @@ class TextEditor extends Component {
     return (
       <div>
         <Editor
+          id="text-editor"
           editorState={this.state.editorState}
-          toolbarClassName="toolbarClassName"
+          toolbarClassName="toolbar-class"
           // wrapperClassName="wrapperClassName"
           wrapperClassName="wrapper-class"
           editorClassName="editorClassName"
