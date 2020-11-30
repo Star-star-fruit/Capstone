@@ -5,6 +5,10 @@ const {User, Word, Email, Words_InEmail} = require('../db/models')
 
 router.post('/', async (req, res, next) => {
   try {
+    //console.log('!!!!!!!!!!!!!!!!!!!!!HERE', req.body.text)
+    // req.body = { 'sorry I dont know': '' }
+    // req.body.text = undefined
+
     const minimisingWords = await Word.findAll({
       where: Sequelize.where(
         Sequelize.fn('LOWER', req.body.text),
@@ -17,6 +21,7 @@ router.post('/', async (req, res, next) => {
         )
       )
     })
+
     const client = new language.LanguageServiceClient()
     const document = {
       content: req.body.text,

@@ -1,8 +1,11 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import {EditorState, convertToRaw} from 'draft-js'
 import {Editor} from 'react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import Mark from 'mark.js'
+import {getSentimentAnalysis} from '../store/sentiment'
+import {getMinimizingWords} from '../store/words'
 
 class TextEditor extends Component {
   constructor(props) {
@@ -19,7 +22,7 @@ class TextEditor extends Component {
   }
 
   analyze() {
-    //let text = this.state.editorState.getCurrentContent().getPlainText('\u0001')
+    let text = this.state.editorState.getCurrentContent().getPlainText('\u0001')
     let term = [
       'sorry',
       'expert',
@@ -34,13 +37,20 @@ class TextEditor extends Component {
     ]
     let instance = new Mark(document.querySelector('.text-editor'))
     instance.mark(term)
+
+    this.props.getSentimentAnalysis(text)
+    this.props.getMinimizingWords(text)
+
+    //logging WORDS too soon, must await for getSentiment & getWords to finish !! hooks?
+    //.then(console.log('THIS IS PROPS AFTER DISPATCH--> ', this.props))
+    //.then(console.log('WORDS ',this.props.words))
+    //.then(console.log('SENTIMENT ',this.props.sentiment))
   }
 
   render() {
     return (
       <div className="text-editor">
         <Editor
-          // className="text-editor"
           editorState={this.state.editorState}
           toolbarClassName="toolbar-class"
           wrapperClassName="wrapper-class"
@@ -54,4 +64,14 @@ class TextEditor extends Component {
   }
 }
 
-export default TextEditor
+const mapState = state => ({
+  sentiment: state.sentiment,
+  words: state.words
+})
+
+const mapDispatch = dispatch => ({
+  getSentimentAnalysis: text => dispatch(getSentimentAnalysis(text)),
+  getMinimizingWords: text => dispatch(getMinimizingWords(text))
+})
+
+export default connect(mapState, mapDispatch)(TextEditor)
