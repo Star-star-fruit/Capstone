@@ -29,8 +29,7 @@ class TextEditor extends Component {
 
     let terms = this.props.words.map(element => element.word)
 
-    console.log('this.props.words -->', this.props.words)
-    console.log('terms -->', terms)
+    //console.log('terms -->', terms)
 
     let instance = new Mark(document.querySelector('.text-editor'))
     const options = {
@@ -41,19 +40,24 @@ class TextEditor extends Component {
     }
     instance.mark(terms, options)
 
-    console.log('WORDS ', this.props.words)
+    //console.log('WORDS ', this.props.words)
   }
 
   render() {
+    // toolbar={
+    //   {inline: {subscript: undefined}}
+    // }
     return (
-      <div className="text-editor">
-        <Editor
-          editorState={this.state.editorState}
-          toolbarClassName="toolbar-class"
-          wrapperClassName="wrapper-class"
-          editorClassName="editorClassName"
-          onEditorStateChange={this.onEditorStateChange}
-        />
+      <div className="text-editor-parent">
+        <div className="text-editor">
+          <Editor
+            editorState={this.state.editorState}
+            toolbarClassName="toolbar-class"
+            wrapperClassName="wrapper-class"
+            editorClassName="editorClassName"
+            onEditorStateChange={this.onEditorStateChange}
+          />
+        </div>
         <button onClick={this.analyze}>Analyze</button> <br /> <br />
         <button>Save draft</button>
       </div>
