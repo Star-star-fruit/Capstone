@@ -1,8 +1,11 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import {EditorState, convertToRaw} from 'draft-js'
 import {Editor} from 'react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import Mark from 'mark.js'
+import {createSentimentAnalysis} from '../store/sentiment'
+import {createMinimizingWords} from '../store/words'
 
 class TextEditor extends Component {
   constructor(props) {
@@ -18,29 +21,33 @@ class TextEditor extends Component {
     this.setState({editorState})
   }
 
-  analyze() {
-    //let text = this.state.editorState.getCurrentContent().getPlainText('\u0001')
-    let term = [
-      'sorry',
-      'expert',
-      'apologize',
-      'believe',
-      'just',
-      'feel',
-      'possibly',
-      'kind of',
-      'likely',
-      'make sense'
-    ]
+  async analyze() {
+    let text = this.state.editorState.getCurrentContent().getPlainText('\u0001')
+
+    await this.props.createSentimentAnalysis(text)
+    await this.props.createMinimizingWords(text)
+
+    let terms = this.props.words.map(element => element.word)
+
+    console.log('this.props.words -->', this.props.words)
+    console.log('terms -->', terms)
+
     let instance = new Mark(document.querySelector('.text-editor'))
-    instance.mark(term)
+    const options = {
+      accuracy: {
+        value: 'exactly',
+        limiters: [',', '.']
+      }
+    }
+    instance.mark(terms, options)
+
+    console.log('WORDS ', this.props.words)
   }
 
   render() {
     return (
       <div className="text-editor">
         <Editor
-          // className="text-editor"
           editorState={this.state.editorState}
           toolbarClassName="toolbar-class"
           wrapperClassName="wrapper-class"
@@ -54,4 +61,14 @@ class TextEditor extends Component {
   }
 }
 
-export default TextEditor
+const mapState = state => ({
+  sentiment: state.sentiment,
+  words: state.words
+})
+
+const mapDispatch = dispatch => ({
+  createSentimentAnalysis: text => dispatch(createSentimentAnalysis(text)),
+  createMinimizingWords: text => dispatch(createMinimizingWords(text))
+})
+
+export default connect(mapState, mapDispatch)(TextEditor)
