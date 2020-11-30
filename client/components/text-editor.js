@@ -19,25 +19,36 @@ class TextEditor extends Component {
   }
 
   analyze() {
-    let text = this.state.editorState.getCurrentContent().getPlainText('\u0001')
-
-    let term = 'sorry'
-    let instance = new Mark(document.getElementById('text-editor'))
+    //let text = this.state.editorState.getCurrentContent().getPlainText('\u0001')
+    let term = [
+      'sorry',
+      'expert',
+      'apologize',
+      'believe',
+      'just',
+      'feel',
+      'possibly',
+      'kind of',
+      'likely',
+      'make sense'
+    ]
+    let instance = new Mark(document.querySelector('.text-editor'))
     instance.mark(term)
   }
 
   render() {
     return (
-      <div>
+      <div className="text-editor">
         <Editor
-          id="text-editor"
+          // className="text-editor"
           editorState={this.state.editorState}
           toolbarClassName="toolbar-class"
           wrapperClassName="wrapper-class"
           editorClassName="editorClassName"
           onEditorStateChange={this.onEditorStateChange}
         />
-        <button onClick={this.analyze}>Analyze</button>
+        <button onClick={this.analyze}>Analyze</button> <br /> <br />
+        <button>Save draft</button>
       </div>
     )
   }
