@@ -7,6 +7,7 @@ const App = () => {
   return (
     <div>
       <Navbar />
+      {/* <Home />  holds pics, mission statement, link to text editor*/}
       <Routes />
     </div>
   )
