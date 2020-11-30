@@ -4,8 +4,8 @@ import {EditorState, convertToRaw} from 'draft-js'
 import {Editor} from 'react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import Mark from 'mark.js'
-import {getSentimentAnalysis} from '../store/sentiment'
-import {getMinimizingWords} from '../store/words'
+import {createSentimentAnalysis} from '../store/sentiment'
+import {createMinimizingWords} from '../store/words'
 
 class TextEditor extends Component {
   constructor(props) {
@@ -21,30 +21,27 @@ class TextEditor extends Component {
     this.setState({editorState})
   }
 
-  analyze() {
+  async analyze() {
     let text = this.state.editorState.getCurrentContent().getPlainText('\u0001')
-    let term = [
-      'sorry',
-      'expert',
-      'apologize',
-      'believe',
-      'just',
-      'feel',
-      'possibly',
-      'kind of',
-      'likely',
-      'make sense'
-    ]
+
+    await this.props.createSentimentAnalysis(text)
+    await this.props.createMinimizingWords(text)
+
+    let terms = this.props.words.map(element => element.word)
+
+    console.log('this.props.words -->', this.props.words)
+    console.log('terms -->', terms)
+
     let instance = new Mark(document.querySelector('.text-editor'))
-    instance.mark(term)
+    const options = {
+      accuracy: {
+        value: 'exactly',
+        limiters: [',', '.']
+      }
+    }
+    instance.mark(terms, options)
 
-    this.props.getSentimentAnalysis(text)
-    this.props.getMinimizingWords(text)
-
-    //logging WORDS too soon, must await for getSentiment & getWords to finish !! hooks?
-    //.then(console.log('THIS IS PROPS AFTER DISPATCH--> ', this.props))
-    //.then(console.log('WORDS ',this.props.words))
-    //.then(console.log('SENTIMENT ',this.props.sentiment))
+    console.log('WORDS ', this.props.words)
   }
 
   render() {
@@ -70,8 +67,8 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
-  getSentimentAnalysis: text => dispatch(getSentimentAnalysis(text)),
-  getMinimizingWords: text => dispatch(getMinimizingWords(text))
+  createSentimentAnalysis: text => dispatch(createSentimentAnalysis(text)),
+  createMinimizingWords: text => dispatch(createMinimizingWords(text))
 })
 
 export default connect(mapState, mapDispatch)(TextEditor)

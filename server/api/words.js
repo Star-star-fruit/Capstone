@@ -5,11 +5,7 @@ const {User, Word, Email, Words_InEmail} = require('../db/models')
 
 router.post('/', async (req, res, next) => {
   try {
-    //console.log('!!!!!!!!!!!!!!!!!!!!!HERE', req.body.text)
-    // req.body = { 'sorry I dont know': '' }
-    // req.body.text = undefined
-
-    const minimisingWords = await Word.findAll({
+    const minimizingWords = await Word.findAll({
       where: Sequelize.where(
         Sequelize.fn('LOWER', req.body.text),
         'LIKE',
@@ -29,7 +25,7 @@ router.post('/', async (req, res, next) => {
     }
     const [result] = await client.analyzeSentiment({document})
     const sentiment = result.documentSentiment
-    const analysis = {minimisingWords, sentiment}
+    const analysis = {minimizingWords, sentiment}
     res.json(analysis)
   } catch (error) {
     next(error)

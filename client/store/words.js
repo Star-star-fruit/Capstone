@@ -16,13 +16,10 @@ const setMinimizingWords = minimizingWords => ({
 /**
  * THUNK CREATORS
  */
-export const getMinimizingWords = text => async dispatch => {
+export const createMinimizingWords = text => async dispatch => {
   try {
     const {data: analysis} = await axios.post('/api/words', {text})
-    console.log('RES --> ', analysis)
-    console.log('minimizing words --> ', analysis.minimisingWords)
-
-    dispatch(setMinimizingWords(analysis.minimisingWords))
+    dispatch(setMinimizingWords(analysis.minimizingWords))
   } catch (error) {
     console.error('Error occured while getting minimizing words --> ', error)
   }
