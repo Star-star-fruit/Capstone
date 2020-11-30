@@ -1,17 +1,31 @@
 const router = require('express').Router()
 const language = require('@google-cloud/language')
+const Sequelize = require('sequelize')
 const {User, Word, Email, Words_InEmail} = require('../db/models')
 
-router.get('/', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
+    const minimisingWords = await Word.findAll({
+      where: Sequelize.where(
+        Sequelize.fn('LOWER', req.body.text),
+        'LIKE',
+        Sequelize.fn(
+          'CONCAT',
+          '%',
+          Sequelize.fn('LOWER', Sequelize.col('word')),
+          '%'
+        )
+      )
+    })
     const client = new language.LanguageServiceClient()
     const document = {
       content: req.body.text,
       type: 'PLAIN_TEXT'
     }
-    const [result] = await client.analyzeSentiment({document: document})
+    const [result] = await client.analyzeSentiment({document})
     const sentiment = result.documentSentiment
-    res.json(sentiment)
+    const analysis = {minimisingWords, sentiment}
+    res.json(analysis)
   } catch (error) {
     next(error)
   }
