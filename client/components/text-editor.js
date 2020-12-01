@@ -36,7 +36,8 @@ class TextEditor extends Component {
       accuracy: {
         value: 'exactly',
         limiters: [',', '.']
-      }
+      },
+      separateWordSearch: false
     }
     instance.mark(terms, options)
 
