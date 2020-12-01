@@ -8,6 +8,7 @@ import {me} from './store'
 /**
  * COMPONENT
  */
+//console.log('hello world')
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
