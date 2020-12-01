@@ -34,9 +34,7 @@ class Routes extends Component {
           <Route component={Login} />
         </Switch>
 
-        <Route path="/texteditor">
-          <TextEditor />
-        </Route>
+        <Route path="/texteditor" component={TextEditor} />
       </div>
     )
   }
