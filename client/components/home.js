@@ -111,14 +111,9 @@ class Home extends Component {
               Try our text editor
             </Button>
           </Box>
-          {/* {require(".../public/images/likeABossBkgrnd.jpg")} bkgrndImage */}
           <Box>
-            {console.log(process.env.PUBLIC_URL)}
-            {/* <img src= '.../likeABossBkgrnd2.jpg' alt="Person climbing to the top" />
-            <img src= {bkgrndImage} alt="Person climbing to the top" /> */}
-            {/* <img src={process.env.PUBLIC_URL + '/public/images/likeABossBkgrnd.png'} alt="Person climbing to the top" /> */}
             <img
-              src="https://drive.google.com/file/d/1umudsT5ZKdjYJnYJch8jUP065SkOMUrQ/view?usp=sharing"
+              src="/images/likeABossBkgrnd.png"
               alt="Person climbing to the top"
             />
 
