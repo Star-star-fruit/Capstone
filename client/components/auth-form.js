@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     backgroundImage:
-      'url(https://image.freepik.com/free-vector/young-women-with-landscape_25030-43713.jpg)',
+      'url(https://images.creativemarket.com/0.1.0/ps/7781623/3005/2001/m1/fpnw/wm0/sisterhood-05-.jpg?1582030921&s=bff106afd5a58c8c0d814c4c0d415dda)',
     backgroundColor:
       theme.palette.type === 'light'
         ? theme.palette.grey[50]
