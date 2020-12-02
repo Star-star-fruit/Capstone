@@ -35,7 +35,7 @@ function Copyright() {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100vh'
+    height: '90vh'
   },
   image: {
     backgroundImage:
@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.secondary.main
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '70%',
     marginTop: theme.spacing(1)
   },
   submit: {
@@ -134,14 +134,15 @@ const SignUp = props => {
             >
               {displayName}
             </Button>
-            <Grid container>
-              <Grid item xs>
-                {' '}
-                <Copyright />
-              </Grid>
-            </Grid>
           </form>
           <a href="/auth/google">{displayName} with Google</a>
+          <br />
+          <Grid container>
+            <Grid item xs>
+              {' '}
+              <Copyright />
+            </Grid>
+          </Grid>
         </div>
       </Grid>
     </Grid>
