@@ -3,10 +3,7 @@ import {styled} from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Box from '@material-ui/core/Box'
 import AboutCard from './about-card'
-// import bkgrndImage from '.../likeABossBkgrnd2.jpg'
-// import bkgrndImage from '/likeABossBkgrnd.png'
 
-// import climbingImg from "../public/images/climbing_like_a_boss.png"
 // const MyButton = styled(Button)({
 //   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
 //   border: 0,
