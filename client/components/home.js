@@ -71,6 +71,14 @@ class Home extends Component {
               Nonbinary to write professional emails assertively. Statistically
               blah blah.{' '}
             </h3>
+            <Button
+              className="nav-button"
+              variant="contained"
+              color="secondary"
+              href="/texteditor"
+            >
+              Try our text editor
+            </Button>
           </Box>
           {/* {require("./public/images/climbing_like_a_boss.png")}  */}
           <Box>

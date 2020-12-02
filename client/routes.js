@@ -8,7 +8,6 @@ import {me} from './store'
 /**
  * COMPONENT
  */
-//console.log('hello world')
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
@@ -21,9 +20,11 @@ class Routes extends Component {
       <div>
         <Switch>
           {/* Routes placed here are available to all visitors */}
-
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/" component={Home} />
+          <Route path="/home" component={Home} />
+          <Route path="/texteditor" component={TextEditor} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
 
           {isLoggedIn && (
             <Switch>
@@ -34,8 +35,6 @@ class Routes extends Component {
           {/* Displays our Login component as a fallback */}
           <Route exact path="/login" component={Login} />
         </Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/texteditor" component={TextEditor} />
       </div>
     )
   }
