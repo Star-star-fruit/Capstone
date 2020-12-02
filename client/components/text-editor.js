@@ -29,8 +29,6 @@ class TextEditor extends Component {
 
     let terms = this.props.words.map(element => element.word)
 
-    //console.log('terms -->', terms)
-
     let instance = new Mark(document.querySelector('.text-editor'))
     const options = {
       accuracy: {
