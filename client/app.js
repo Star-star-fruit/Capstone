@@ -7,21 +7,26 @@ import Drawer from '@material-ui/core/Drawer'
 import Box from '@material-ui/core/Box'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import List from '@material-ui/core/List'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
-import Badge from '@material-ui/core/Badge'
 import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
 import Link from '@material-ui/core/Link'
 import MenuOpenIcon from '@material-ui/icons/MenuOpen'
 import MenuIcon from '@material-ui/icons/Menu'
 import HomeIcon from '@material-ui/icons/Home'
 import PersonIcon from '@material-ui/icons/Person'
-import {Button} from '@material-ui/core'
 import TextFieldsIcon from '@material-ui/icons/TextFields'
+import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import {logout} from './store'
+import ContactMailIcon from '@material-ui/icons/ContactMail'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListItem from '@material-ui/core/ListItem'
+import {Link as RLink} from 'react-router-dom'
+import MeetingRoomIcon from '@material-ui/icons/MeetingRoom'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
 function Copyright() {
   return (
@@ -117,23 +122,23 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const App = () => {
+const App = ({handleClick, isLoggedIn}) => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
+
   const handleDrawerOpen = () => {
     setOpen(true)
   }
   const handleDrawerClose = () => {
     setOpen(false)
   }
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
+  //const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-
       <AppBar
-        color="transparent"
+        color="default"
         position="absolute"
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
@@ -150,16 +155,7 @@ const App = () => {
           >
             <MenuIcon color="action" />
           </IconButton>
-
           <img src="/images/boss.png" alt="logo" width="250" />
-
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          />
         </Toolbar>
       </AppBar>
       <Drawer
@@ -175,29 +171,63 @@ const App = () => {
           </IconButton>
         </div>
         <Divider />
-        <List>
-          <Button href="/home">
-            <HomeIcon />
-          </Button>
-        </List>
-        <Divider />
-        <List>
-          <Button href="/login">
-            <PersonIcon />
-          </Button>
-        </List>
-        <Divider />
-        <List>
-          <Button href="/signup">
-            <PersonIcon />
-          </Button>
-        </List>
-        <Divider />
-        <List>
-          <Button href="/texteditor">
-            <TextFieldsIcon />
-          </Button>
-        </List>
+        <div>
+          <ListItem button component={RLink} to="/home">
+            <ListItemIcon>
+              <HomeIcon href="/home" />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
+          <Divider />
+          <ListItem button component={RLink} to="/texteditor">
+            <ListItemIcon>
+              <TextFieldsIcon />
+            </ListItemIcon>
+            <ListItemText primary="Text Editor" />
+          </ListItem>
+          <Divider />
+          {isLoggedIn ? (
+            <div>
+              <Divider />
+              <ListItem button component={RLink} to="/myaccount">
+                <ListItemIcon>
+                  <ContactMailIcon />
+                </ListItemIcon>
+                <ListItemText primary="My Account" />
+              </ListItem>
+              <Divider />
+              <ListItem
+                button
+                component={RLink}
+                to="/login"
+                onClick={handleClick}
+              >
+                <ListItemIcon>
+                  <MeetingRoomIcon />
+                </ListItemIcon>
+                <ListItemText primary="Log Out" />
+              </ListItem>
+              <Divider />
+            </div>
+          ) : (
+            <div>
+              <ListItem button component={RLink} to="/login">
+                <ListItemIcon>
+                  <ExitToAppIcon />
+                </ListItemIcon>
+                <ListItemText primary="Log In" />
+              </ListItem>
+              <Divider />
+              <ListItem button component={RLink} to="/signup">
+                <ListItemIcon>
+                  <PersonIcon />
+                </ListItemIcon>
+                <ListItemText primary="Sign Up" />
+              </ListItem>
+              <Divider />
+            </div>
+          )}
+        </div>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
@@ -212,4 +242,22 @@ const App = () => {
   )
 }
 
-export default App
+const mapState = state => {
+  return {
+    isLoggedIn: !!state.user.id
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    handleClick() {
+      dispatch(logout())
+    }
+  }
+}
+
+App.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
+}
+export default connect(mapState, mapDispatch)(App)
