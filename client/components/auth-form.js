@@ -3,34 +3,137 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
 
+import Avatar from '@material-ui/core/Avatar'
+import Button from '@material-ui/core/Button'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import TextField from '@material-ui/core/TextField'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
+import Link from '@material-ui/core/Link'
+import Paper from '@material-ui/core/Paper'
+import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
+//import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import Typography from '@material-ui/core/Typography'
+import {makeStyles} from '@material-ui/core/styles'
+
 /**
  * COMPONENT
  */
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Like a Boss
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  )
+}
+// https://images.squarespace-cdn.com/content/v1/51a66d74e4b0d431ae259a9d/1553632747069-0HUMB6E5LG1H46XXNSDC/ke17ZwdGBToddI8pDm48kCrYIuMNMm1GI3vh_7TAIMBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxdri0fPt4wZqcOMTA9H0sn0N0_BMVwYHKKk3Q664sNbnq1ZlorBX2rpVU0RQ6Zarg/image-asset.jpeg?format=1500w
+//https://images.squarespace-cdn.com/content/v1/51a66d74e4b0d431ae259a9d/1553632747069-0HUMB6E5LG1H46XXNSDC/ke17ZwdGBToddI8pDm48kCrYIuMNMm1GI3vh_7TAIMBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxdri0fPt4wZqcOMTA9H0sn0N0_BMVwYHKKk3Q664sNbnq1ZlorBX2rpVU0RQ6Zarg/image-asset.jpeg?format=1500w
+//https://image.freepik.com/free-vector/young-women-with-landscape_25030-43713.jpg
+const useStyles = makeStyles(theme => ({
+  root: {
+    height: '90vh'
+  },
+  image: {
+    backgroundImage:
+      'url(https://image.freepik.com/free-vector/young-women-with-landscape_25030-43713.jpg)',
+    backgroundColor:
+      theme.palette.type === 'light'
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  },
+  paper: {
+    margin: theme.spacing(8, 4),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main
+  },
+  form: {
+    width: '70%',
+    marginTop: theme.spacing(1)
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2)
+  }
+}))
 const AuthForm = props => {
+  const classes = useStyles()
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
+    <Grid container component="main" className={classes.root}>
+      <CssBaseline />
+      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar} />
+          <Typography component="h1" variant="h5">
+            Log In
+          </Typography>
+          <form className={classes.form} onSubmit={handleSubmit} name={name}>
+            <TextField
+              variant="standard"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              variant="standard"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              {displayName}
+            </Button>
+          </form>
+          <a href="/auth/google">{displayName} with Google</a>
+          <br />
+          <Grid container justify="center">
+            <Link href="/signup" variant="body1">
+              {"Don't have an account? Sign Up here!"}
+            </Link>
+          </Grid>
+
+          <br />
+          <Grid container>
+            <Grid item xs>
+              {' '}
+              <Copyright />
+            </Grid>
+          </Grid>
         </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <a href="/auth/google">{displayName} with Google</a>
-    </div>
+      </Grid>
+    </Grid>
   )
 }
 
