@@ -45,7 +45,7 @@ const SignUp = props => {
           />
         </div>
         <div>
-          <button>{displayName}</button>
+          <button type="button">{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
         <br />

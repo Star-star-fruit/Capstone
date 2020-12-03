@@ -5,6 +5,7 @@ const Words_InEmail = require('./wordsInEmail')
 
 User.hasMany(Email)
 Email.belongsTo(User)
+
 Email.belongsToMany(Word, {through: Words_InEmail})
 Word.belongsToMany(Email, {through: Words_InEmail})
 

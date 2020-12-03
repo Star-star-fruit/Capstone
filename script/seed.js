@@ -30,13 +30,13 @@ async function seed() {
 
   const emails = await Promise.all([
     Email.create({
-      email:
+      content:
         'Im holding on your rope, got me ten feet off the ground and Im hearing what you say, but I just cant make a sound. You tell me that you need me, then you go and cut me down, but wait. You tell me that youre sorry Did not think I would turn around, and say That it is too late to apologize, its too late I said it is too late to apologize, its too late I would take another chance, take a fall Take a shot for you And I need you like a heart needs a beat But its nothing new, yeah, yeah I loved you with a fire red Now its turning blue, and you say Sorry like the angel heaven let me think was you But Im afraid Its too late to apologize, its too late I said its too late to apologize, its too late, whoa Its too late to apologize, its too late I said its too late to apologize, its too late I said its too late to apologize, yeah I said its too late to apologize, yeah Im holding on your rope, got me ten feet off the ground',
       count: 2,
       userId: 1
     }),
     Email.create({
-      email:
+      content:
         'Hello, its me I was wondering if after all these years you would like to meet To go over everything They say that time is supposed to heal ya But I aint done much healing Hello, can you hear me? Im in California dreaming about who we used to be When we were younger and free Ive forgotten how it felt before the world fell at our feet Theres such a difference between us And a million miles Hello from the other side I mustve called a thousand times To tell you Im sorry For everything that Ive done But when I call you never Seem to be home Hello from the outside At least I can say that Ive tried To tell you Im sorry For breaking your heart But it dont matter, it clearly Doesnt tear you apart anymore Hello, how are you? Its so typical of me to talk about',
       count: 1,
       userId: 2
