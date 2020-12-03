@@ -7,8 +7,8 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 
 export default function AboutCard(props) {
-  //pass an object named
   const {imgUrl, name, description, linkedInUrl, gitHubUrl} = props.creator
+
   return (
     //card display w person img, name, email, description
     <Card>

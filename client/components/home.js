@@ -85,45 +85,79 @@ class Home extends Component {
           </Box>
         </Box>
 
+        {/* flexDirection="column" justifyContent="center" */}
         <Box
-          id="about-app"
           display="flex"
-          justifyContent="space-between"
-          p={4}
-          m={7}
+          justifyContent="center"
+          flexDirection="column"
+          p={6}
+          m={1}
         >
-          <Box>
-            <h1>LIKE A BOSS</h1>
-            <h3>
-              The text editor made to dismantle the patriarchy. For Women and
-              Nonbinary to write professional emails assertively. Statistically
-              blah blah.{' '}
-            </h3>
-            <Button
-              className="nav-button"
-              variant="contained"
-              color="secondary"
-              href="/texteditor"
-            >
-              Try our text editor
-            </Button>
+          <Box display="flex" justifyContent="center">
+            <img
+              src="/images/logoTransparent.png"
+              alt="Like a Boss"
+              height="100%"
+              width="55%"
+            />
           </Box>
-          <Box>
+          <Box display="flex" justifyContent="center">
+            <p>
+              Reveal and replace the passive language in your bussiness writing.
+            </p>
+            <div>
+              <Button
+                className="nav-button"
+                variant="contained"
+                color="primary"
+                href="/texteditor"
+              >
+                Try our text editor
+              </Button>
+            </div>
+          </Box>
+        </Box>
+
+        <Box id="about-app" display="flex" justifyContent="space-between">
+          <Box id="home-image">
+            <Box id="home-text">
+              <img
+                src="/images/logoTransparent.png"
+                alt="Like a Boss"
+                height="100%"
+                width="55%"
+              />
+
+              {/* <h1>LIKE A BOSS</h1> */}
+
+              <h3>
+                The text editor made to dismantle the patriarchy. For Women and
+                Nonbinary to write professional emails assertively.
+                Statistically blah blah.{' '}
+              </h3>
+              <Button
+                className="nav-button"
+                variant="contained"
+                color="secondary"
+                href="/texteditor"
+              >
+                Try our text editor
+              </Button>
+            </Box>
             <img
               src="/images/likeABossBkgrnd.png"
               alt="Person climbing to the top"
             />
-
-            {/* <img
-              src="https://media.istockphoto.com/vectors/flat-illustration-with-business-ladies-climbing-on-top-of-white-on-vector-id1141278192?k=6&m=1141278192&s=612x612&w=0&h=qKf55R47YgA8ny5_YkWTFes-UNw4qYzFM6XW0j_Ds6k="
-              alt="empowering img"
-            /> */}
           </Box>
         </Box>
 
         <div id="about-us">
-          <h2>About Us</h2>
-          <Box display="flex" p={7} m={1}>
+          <Box display="flex" justifyContent="center">
+            <h2>
+              <span>About Us</span>
+            </h2>
+          </Box>
+          <Box display="flex" p={2} m={1}>
             {creators.map(creator => (
               <Box p={2} m={1} key={creator.name}>
                 <AboutCard creator={creator} />
