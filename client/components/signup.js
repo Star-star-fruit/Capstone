@@ -13,13 +13,9 @@ import Link from '@material-ui/core/Link'
 import Paper from '@material-ui/core/Paper'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
-//import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
 
-/**
- * COMPONENT
- */
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -148,76 +144,6 @@ const SignUp = props => {
     </Grid>
   )
 }
-//   const {name, displayName, handleSubmit, error} = props
-
-//   return (
-//     <div>
-//       <form onSubmit={handleSubmit} name={name} noValidate autoComplete="off">
-//         <div>
-//           <Input
-//             id="standard-basic"
-//             label="First Name"
-//             name="firstName"
-//             margin="normal"
-//             required
-//             fullWidth
-//             autoFocus
-//           />
-//         </div>
-//         <div>
-//           <Input
-//             id="standard-basic"
-//             name="lastName"
-//             label="Last Name"
-//             margin="normal"
-//             required
-//             fullWidth
-//             autoFocus
-//           />
-//         </div>
-//         <div>
-//           <Input
-//             id="standard-basic"
-//             margin="normal"
-//             required
-//             fullWidth
-//             label="Email Address"
-//             name="email"
-//             type="email"
-//             required
-//             autoFocus
-//           />
-//         </div>
-//         <div>
-//           <Input
-//             id="standard-basic"
-//             margin="normal"
-//             label="Password"
-//             name="password"
-//             type="password"
-//             required
-//           />
-//         </div>
-//         <div>
-//           <button>{displayName}</button>
-//         </div>
-//         {error && error.response && <div> {error.response.data} </div>}
-//         <br />
-//         <a href="/auth/google" className="btn btn-success">
-//           {displayName} with Google
-//         </a>
-//       </form>
-//     </div>
-//   )
-// }
-
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
 
 const mapSignup = state => {
   return {
@@ -243,9 +169,6 @@ const mapDispatch = dispatch => {
 
 export const Signup = connect(mapSignup, mapDispatch)(SignUp)
 
-/**
- * PROP TYPES
- */
 SignUp.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
