@@ -37,6 +37,7 @@ mark {
   margin-right: 20%;
 }
 
+
 #home-image-wrapper {
   position: relative;
   width: 100%;
@@ -62,6 +63,14 @@ mark {
 
 .home-about-img {
   width: 20%;
+
+.wordCloud {
+  display: flex;
+  justify-content: center;
+  margin-left: 30%;
+  margin-right: 30%;
+  width: 25%;
+
 }
 
 /* EDITOR STYLES COPIED FROM /node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css */
