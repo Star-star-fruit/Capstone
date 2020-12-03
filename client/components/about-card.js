@@ -5,28 +5,33 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
+import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import GitHubIcon from '@material-ui/icons/GitHub'
 
 export default function AboutCard(props) {
   const {imgUrl, name, description, linkedInUrl, gitHubUrl} = props.creator
 
   return (
-    //card display w person img, name, email, description
     <Card>
       <CardActionArea>
         <CardMedia
           component="img"
           alt={`About ${name}`}
-          height="140"
+          height="70"
           image={imgUrl}
           title={`About ${name}`}
         />
         <CardContent>
-          <h2>{name}</h2>
+          <h3>{name}</h3>
           <h5>{description}</h5>
         </CardContent>
         <CardActions>
-          <Button href={linkedInUrl}>LinkedIn</Button>
-          <Button href={gitHubUrl}>GitHub</Button>
+          <Button href={linkedInUrl}>
+            <LinkedInIcon />
+          </Button>
+          <Button href={gitHubUrl}>
+            <GitHubIcon />
+          </Button>
         </CardActions>
       </CardActionArea>
     </Card>
