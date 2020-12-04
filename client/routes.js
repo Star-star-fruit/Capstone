@@ -6,9 +6,9 @@ import {
   Login,
   Signup,
   UserHome,
-  TextEditor,
   Home,
-  TextEditorContainer
+  TextEditorContainer,
+  MyAccount
 } from './components'
 import {me} from './store'
 
@@ -38,7 +38,7 @@ class Routes extends Component {
               {/* Routes placed here are only available after logging in */}
               <Route exact path="/home" component={UserHome} />
               <Route path="/texteditor/:id" component={TextEditorContainer} />
-              {/* <Route exact path="/texteditor/:draftId" component={TextEditor} /> */}
+              <Route path="/myaccount" component={MyAccount} />
             </Switch>
           )}
         </Switch>
