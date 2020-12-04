@@ -2,11 +2,8 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Email = db.define('email', {
-  email: {
+  content: {
     type: Sequelize.TEXT
-  },
-  count: {
-    type: Sequelize.INTEGER
   }
 })
 
