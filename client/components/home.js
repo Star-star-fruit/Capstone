@@ -61,11 +61,9 @@ class Home extends Component {
       <div>
         <div>
           <Box
-            id="about-app"
             display="flex"
             justifyContent="space-between"
             id="home-image-wrapper"
-            className={classes.Box}
           >
             <Box>
               <Box id="home-text">
