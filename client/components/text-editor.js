@@ -14,7 +14,9 @@ import {withRouter} from 'react-router-dom'
 class TextEditor extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      showScore: false
+    }
     this.onEditorStateChange = this.onEditorStateChange.bind(this)
     this.analyze = this.analyze.bind(this)
   }
@@ -89,6 +91,9 @@ class TextEditor extends Component {
       separateWordSearch: false
     }
     instance.mark(terms, options)
+    this.setState({
+      showScore: true
+    })
   }
 
   render() {
@@ -98,7 +103,6 @@ class TextEditor extends Component {
     // if (!this.state.editorState) {
     //   return <h3 className="loading">Loading...</h3>
     // }
-    const {isLoggedIn, draft} = this.props
     const editorState = this.state.editorState
 
     return (
@@ -124,6 +128,13 @@ class TextEditor extends Component {
         >
           Save draft
         </button>
+        <div>
+          {this.state.showScore
+            ? `Your text obtained a score of ${Math.floor(
+                this.props.sentiment.score * 100
+              ) / 100} with ${this.props.words.length} minimizing words!`
+            : undefined}
+        </div>
       </div>
     )
   }
