@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {EditorState, convertToRaw, convertFromRaw} from 'draft-js'
+import {EditorState, convertToRaw, convertFromRaw, ContentState} from 'draft-js'
 import {Editor} from 'react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import Mark from 'mark.js'
@@ -9,6 +9,7 @@ import {createMinimizingWords} from '../store/words'
 import PropTypes from 'prop-types'
 import {updateExistingDraft, fetchDraft} from '../store/singleDraft'
 import {postNewDraft} from '../store/drafts'
+import {withRouter} from 'react-router-dom'
 
 class TextEditor extends Component {
   constructor(props) {
@@ -21,12 +22,12 @@ class TextEditor extends Component {
   saveContent = contentState => {
     const currentContent = contentState.getPlainText('\u0001')
 
-    if (this.props.isLoggedIn && !this.props.draft.id) {
+    if (this.props.isLoggedIn && !this.props.match.params.id) {
       this.props.postNewDraft({content: currentContent})
-    } else if (this.props.isLoggedIn && this.props.draft.id) {
+    } else if (this.props.isLoggedIn && this.props.match.params.id) {
       this.props.updateExistingDraft({
         content: currentContent,
-        id: this.props.draft.id
+        id: this.props.match.params.id
       })
     } else {
       window.localStorage.setItem(
@@ -42,7 +43,7 @@ class TextEditor extends Component {
     this.setState({editorState})
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     if (!this.props.isLoggedIn) {
       const content = window.localStorage.getItem('content')
       if (content) {
@@ -56,8 +57,13 @@ class TextEditor extends Component {
           editorState: EditorState.createEmpty()
         })
       }
-    } else if (this.props.isLoggedIn && this.props.draft.id) {
-      this.props.fetchDraft(this.props.match.params.id)
+    } else if (this.props.isLoggedIn && this.props.match.params.id) {
+      const action = await this.props.fetchDraft(this.props.match.params.id)
+      this.setState({
+        editorState: EditorState.createWithContent(
+          ContentState.createFromText(action.draft.content)
+        )
+      })
     } else {
       this.setState({
         editorState: EditorState.createEmpty()
@@ -86,12 +92,13 @@ class TextEditor extends Component {
   }
 
   render() {
+    if (!this.props.match.params.id && this.props.draft.id) {
+      this.props.history.push(`/texteditor/${this.props.draft.id}`)
+    }
     // if (!this.state.editorState) {
     //   return <h3 className="loading">Loading...</h3>
     // }
-    console.log('This is PROPS -->', this.props)
-
-    // const {isLoggedIn, draft} = this.props
+    const {isLoggedIn, draft} = this.props
     const editorState = this.state.editorState
 
     return (
@@ -133,11 +140,12 @@ const mapDispatch = dispatch => ({
   createSentimentAnalysis: text => dispatch(createSentimentAnalysis(text)),
   createMinimizingWords: text => dispatch(createMinimizingWords(text)),
   postNewDraft: draft => dispatch(postNewDraft(draft)),
-  updateExistingDraft: draft => dispatch(updateExistingDraft(draft))
+  updateExistingDraft: draft => dispatch(updateExistingDraft(draft)),
+  fetchDraft: draftId => dispatch(fetchDraft(draftId))
 })
 
 TextEditor.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired
 }
 
-export default connect(mapState, mapDispatch)(TextEditor)
+export default withRouter(connect(mapState, mapDispatch)(TextEditor))

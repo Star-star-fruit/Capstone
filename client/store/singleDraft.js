@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {SET_NEW_DRAFT} from './drafts'
+import {REMOVE_USER} from './user'
 
 //ACTION TYPE
 
@@ -28,7 +29,7 @@ export const fetchDraft = draftId => {
   return async dispatch => {
     try {
       const {data: draft} = await axios.get(`/api/drafts/${draftId}`)
-      dispatch(getSingleDraft(draft))
+      return dispatch(getSingleDraft(draft))
     } catch (err) {
       console.error('There was a problem fetching this draft!')
       console.error(err)
@@ -65,6 +66,8 @@ const singleDraft = (state = initialState, action) => {
       return action.draft
     case UPDATE_DRAFT:
       return action.draft
+    case REMOVE_USER:
+      return initialState
     default:
       return state
   }

@@ -5,7 +5,7 @@ import history from '../history'
  * ACTION TYPES
  */
 const GET_USER = 'GET_USER'
-const REMOVE_USER = 'REMOVE_USER'
+export const REMOVE_USER = 'REMOVE_USER'
 const ADD_USER = 'ADD_USER'
 
 /**
@@ -96,7 +96,7 @@ export default function(state = defaultUser, action) {
     case GET_USER:
       return action.user
     case REMOVE_USER:
-      return defaultUser
+      return loggedOutUser
     default:
       return state
   }
