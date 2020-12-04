@@ -12,28 +12,30 @@ export default function AboutCard(props) {
   const {imgUrl, name, description, linkedInUrl, gitHubUrl} = props.creator
 
   return (
-    <Card>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt={`About ${name}`}
-          height="70"
-          image={imgUrl}
-          title={`About ${name}`}
-        />
-        <CardContent>
-          <h3>{name}</h3>
-          <h5>{description}</h5>
-        </CardContent>
-        <CardActions>
-          <Button href={linkedInUrl}>
-            <LinkedInIcon />
-          </Button>
-          <Button href={gitHubUrl}>
-            <GitHubIcon />
-          </Button>
-        </CardActions>
-      </CardActionArea>
-    </Card>
+    <div>
+      <Card>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            alt={`About ${name}`}
+            height="70"
+            image={imgUrl}
+            title={`About ${name}`}
+          />
+          <CardContent>
+            <h3>{name}</h3>
+            <h5>{description}</h5>
+          </CardContent>
+          <CardActions>
+            <Button href={linkedInUrl}>
+              <LinkedInIcon />
+            </Button>
+            <Button href={gitHubUrl}>
+              <GitHubIcon />
+            </Button>
+          </CardActions>
+        </CardActionArea>
+      </Card>
+    </div>
   )
 }

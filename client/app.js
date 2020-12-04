@@ -34,8 +34,9 @@ function Copyright() {
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
         Like a Boss
-      </Link>
+      </Link>{' '}
       {new Date().getFullYear()}
+      {'.'}
     </Typography>
   )
 }
@@ -47,7 +48,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex'
   },
   toolbar: {
-    paddingRight: 20, // keep right padding when drawer closed
+    paddingRight: 20,
     color: 'white'
   },
   toolbarIcon: {
