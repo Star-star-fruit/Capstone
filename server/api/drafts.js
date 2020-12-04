@@ -6,10 +6,8 @@ router.post('/', async (req, res, next) => {
     const {content, id} = req.body
     if (!id) {
       const email = await Email.create({
-        where: {
-          userId: req.user.id,
-          content
-        }
+        userId: req.user.id,
+        content
       })
       res.json(email)
     }
@@ -27,6 +25,7 @@ router.put('/:id', async (req, res, next) => {
       }
     })
     email.content = req.body.content
+    console.log('THIS IS EMAIL CONTENT --->', req.body.content)
     await email.save()
     res.json(email)
   } catch (err) {

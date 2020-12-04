@@ -11,7 +11,8 @@ const ADD_USER = 'ADD_USER'
 /**
  * INITIAL STATE
  */
-const defaultUser = {}
+const defaultUser = {loading: true}
+const loggedOutUser = {}
 
 /**
  * ACTION CREATORS
@@ -26,7 +27,7 @@ const addUser = user => ({type: ADD_USER, user})
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
-    dispatch(getUser(res.data || defaultUser))
+    dispatch(getUser(res.data || loggedOutUser))
   } catch (err) {
     console.error(err)
   }
