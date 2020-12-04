@@ -6,8 +6,8 @@ import {
   Login,
   Signup,
   UserHome,
-  TextEditor,
   Home,
+  TextEditorContainer,
   MyAccount
 } from './components'
 import {me} from './store'
@@ -28,21 +28,19 @@ class Routes extends Component {
         <Switch>
           {/* Routes placed here are available to all visitors */}
           <Route exact path="/" component={Home} />
-          <Route path="/home" component={Home} />
-          <Route path="/texteditor" component={TextEditor} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/texteditor" component={TextEditorContainer} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
 
           {isLoggedIn && (
             <Switch>
               {/* Routes placed here are only available after logging in */}
               <Route exact path="/home" component={UserHome} />
-              <Route path="/texteditor" component={TextEditor} />
+              <Route path="/texteditor/:id" component={TextEditorContainer} />
               <Route path="/myaccount" component={MyAccount} />
             </Switch>
           )}
-          {/* Displays our Login component as a fallback */}
-          <Route exact path="/login" component={Login} />
         </Switch>
       </div>
     )

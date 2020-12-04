@@ -12,32 +12,38 @@ async function seed() {
       firstName: 'Elisa',
       lastName: 'Levet',
       email: 'elisa@hotmail.com',
-      password: '12345!'
+      password: 'elisa'
     }),
     User.create({
       firstName: 'Stuart',
       lastName: 'Ruston',
       email: 'stuart@hotmail.com',
-      password: '123456'
+      password: 'stuart'
     }),
     User.create({
       firstName: 'Paty',
       lastName: 'Lavin',
       email: 'paty@hotmail.com',
-      password: '123'
+      password: 'paty'
     })
   ])
 
   const emails = await Promise.all([
     Email.create({
       email:
-        'Im holding on your rope, got me ten feet off the ground and Im hearing what you say, but I just cant make a sound. You tell me that you need me, then you go and cut me down, but wait. You tell me that youre sorry Did not think I would turn around, and say That it is too late to apologize, its too late I said it is too late to apologize, its too late I would take another chance, take a fall Take a shot for you And I need you like a heart needs a beat But its nothing new, yeah, yeah I loved you with a fire red Now its turning blue, and you say Sorry like the angel heaven let me think was you But Im afraid Its too late to apologize, its too late I said its too late to apologize, its too late, whoa Its too late to apologize, its too late I said its too late to apologize, its too late I said its too late to apologize, yeah I said its too late to apologize, yeah Im holding on your rope, got me ten feet off the ground',
+        'Hello, I apologize for arriving 5 minutes late to our meeting, I was walking back from lunch. I was wondering if I could possibly have a one-day extension for the styling of our website. I am no expert in UI design, but it seems like the styles are not applying to some of our components. I feel it is due to a bug. I’m sorry about this delay.',
       count: 2,
       userId: 1
     }),
     Email.create({
       email:
-        'Hello, its me I was wondering if after all these years you would like to meet To go over everything They say that time is supposed to heal ya But I aint done much healing Hello, can you hear me? Im in California dreaming about who we used to be When we were younger and free Ive forgotten how it felt before the world fell at our feet Theres such a difference between us And a million miles Hello from the other side I mustve called a thousand times To tell you Im sorry For everything that Ive done But when I call you never Seem to be home Hello from the outside At least I can say that Ive tried To tell you Im sorry For breaking your heart But it dont matter, it clearly Doesnt tear you apart anymore Hello, how are you? Its so typical of me to talk about',
+        'Hi, I don’t know if this is right, but I have found a merge conflict from your pull request that I feel you need you to resolve. It seems like you deleted an important part of our server/index. I just want to let you know so we can continue with our project.',
+      count: 1,
+      userId: 2
+    }),
+    Email.create({
+      email:
+        'Hello, I have no idea if this is a good point, but I saw an opportunity to organize our styles sheet into smaller files. I believe doing so will prevent future source control conflicts.  Am I making sense? I kind of thought it was a good idea.',
       count: 1,
       userId: 2
     })
@@ -48,7 +54,19 @@ async function seed() {
       word: 'sorry'
     }),
     Word.create({
+      word: 'sorry about that'
+    }),
+    Word.create({
       word: 'expert'
+    }),
+    Word.create({
+      word: 'I am no expert'
+    }),
+    Word.create({
+      word: 'I am not an expert'
+    }),
+    Word.create({
+      word: 'I apologize'
     }),
     Word.create({
       word: 'apologize'
@@ -63,6 +81,9 @@ async function seed() {
       word: 'just'
     }),
     Word.create({
+      word: 'I just think'
+    }),
+    Word.create({
       word: 'possibly'
     }),
     Word.create({
@@ -72,7 +93,43 @@ async function seed() {
       word: 'it is likely'
     }),
     Word.create({
-      word: 'I make sense'
+      word: 'make sense'
+    }),
+    Word.create({
+      word: 'Am I making sense'
+    }),
+    Word.create({
+      word: 'am I making sense'
+    }),
+    Word.create({
+      word: "I don't know if this is right"
+    }),
+    Word.create({
+      word: 'I might be wrong'
+    }),
+    Word.create({
+      word: 'It is my fault'
+    }),
+    Word.create({
+      word: 'It was my fault'
+    }),
+    Word.create({
+      word: 'sort of like'
+    }),
+    Word.create({
+      word: 'just wondering'
+    }),
+    Word.create({
+      word: 'actually'
+    }),
+    Word.create({
+      word: 'I will try my best'
+    }),
+    Word.create({
+      word: 'I am not sure'
+    }),
+    Word.create({
+      word: 'I have no idea if'
     })
   ])
 

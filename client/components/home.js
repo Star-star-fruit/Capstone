@@ -5,53 +5,27 @@ import Box from '@material-ui/core/Box'
 import AboutCard from './about-card'
 import {createMuiTheme} from '@material-ui/core/styles'
 
-const styles = theme => ({
-  box: {
-    width: 300,
-    margin: 'auto'
-  },
-  Media: {
-    height: 550,
-    width: '100%',
-    objectFit: 'cover'
-  }
-})
-
 class Home extends Component {
   render() {
-    const classes = createMuiTheme({
-      box: {
-        width: 300,
-        margin: 'auto'
-      },
-      Box: {
-        height: 550
-        // width: '100%',
-        // maxWidth: '100%',
-
-        //objectFit: 'cover'
-      }
-    })
     const creators = [
       {
         name: 'Prakruti PK',
         description: 'Hello I am PK',
-        imgUrl:
-          'https://cdn2.iconfinder.com/data/icons/green-2/32/expand-color-web2-23-512.png',
+        imgUrl: '/images/elisa5.png',
         linkedInUrl: 'blah',
         gitHubUrl: 'https://github.com/prakruti-pk'
       },
       {
         name: 'Elisa Levet',
         description: 'Hello I am Elisa',
-        imgUrl: '/images/elisa.png',
+        imgUrl: '/images/elisa5.png',
+        linkedInUrl: 'https://www.linkedin.com/in/elisa-levet/',
         gitHubUrl: 'https://github.com/elisalevet'
       },
       {
         name: 'Brooke Parsons',
         description: 'Hello I am Brooke',
-        imgUrl:
-          'https://cdn2.iconfinder.com/data/icons/green-2/32/expand-color-web2-23-512.png',
+        imgUrl: '/images/elisa5.png',
         linkedInUrl: 'https://www.linkedin.com/in/brooke-parsons-a09959191/',
         gitHubUrl: 'https://github.com/brookeparsons'
       }
@@ -67,14 +41,14 @@ class Home extends Component {
           >
             <Box>
               <Box id="home-text">
-                <h1>
-                  Reveal and replace the passive language in your business
-                  emails.
-                </h1>
+                <h2>
+                  Reveal and replace the passive <br />
+                  language in your business emails.
+                </h2>
                 <h3>
-                  The text editor made to dismantle the patriarchy. For women
-                  and nonbinary folk to write professional emails assertively.
-                  Statistically blah blah.{' '}
+                  The text editor made to dismantle the patriarchy. <br />
+                  For women and nonbinary folk to write professional emails
+                  assertively. <br /> Statistically blah blah.{' '}
                 </h3>
                 <Button
                   // className={classes.button.textTransform}
