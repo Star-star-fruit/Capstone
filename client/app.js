@@ -231,7 +231,7 @@ const App = ({handleClick, isLoggedIn}) => {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
+        <Container maxWidth="100%" className={classes.container}>
           <Routes />
           <Box pt={4}>
             <Copyright />

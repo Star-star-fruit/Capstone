@@ -5,19 +5,31 @@ import Box from '@material-ui/core/Box'
 import AboutCard from './about-card'
 import {createMuiTheme} from '@material-ui/core/styles'
 
-// const theme = createMuiTheme({
-//   typography: {
-//     button: {
-//       textTransform: 'none'
-//     }
-//   }
-// });
+const styles = theme => ({
+  box: {
+    width: 300,
+    margin: 'auto'
+  },
+  Media: {
+    height: 550,
+    width: '100%',
+    objectFit: 'cover'
+  }
+})
 
 class Home extends Component {
   render() {
     const classes = createMuiTheme({
-      button: {
-        textTransform: 'none'
+      box: {
+        width: 300,
+        margin: 'auto'
+      },
+      Box: {
+        height: 550
+        // width: '100%',
+        // maxWidth: '100%',
+
+        //objectFit: 'cover'
       }
     })
     const creators = [
@@ -53,6 +65,7 @@ class Home extends Component {
             display="flex"
             justifyContent="space-between"
             id="home-image-wrapper"
+            className={classes.Box}
           >
             <Box>
               <Box id="home-text">
@@ -66,7 +79,7 @@ class Home extends Component {
                   Statistically blah blah.{' '}
                 </h3>
                 <Button
-                  className={classes.button.textTransform}
+                  // className={classes.button.textTransform}
                   variant="contained"
                   href="/texteditor"
                 >
