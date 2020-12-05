@@ -68,7 +68,7 @@ class TextEditor extends Component {
           )
         })
       } catch (error) {
-        console.error('Error fetching a draft: ', error)
+        console.error('There was a problem fetching a draft: ', error)
       }
     } else {
       this.setState({
@@ -85,13 +85,19 @@ class TextEditor extends Component {
     try {
       await this.props.createSentimentAnalysis(text)
     } catch (error) {
-      console.error('Error creating the sentiment analysis: ', error)
+      console.error(
+        'There was a problem creating the sentiment analysis: ',
+        error
+      )
     }
 
     try {
       await this.props.createMinimizingWords(text)
     } catch (error) {
-      console.error('Error creating the minimizing words: ', error)
+      console.error(
+        'There was a problem creating the minimizing words: ',
+        error
+      )
     }
 
     const terms = this.props.words.map(element => element.word)
