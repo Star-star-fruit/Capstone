@@ -60,12 +60,16 @@ class TextEditor extends Component {
         })
       }
     } else if (this.props.isLoggedIn && this.props.match.params.id) {
-      const action = await this.props.fetchDraft(this.props.match.params.id)
-      this.setState({
-        editorState: EditorState.createWithContent(
-          ContentState.createFromText(action.draft.content)
-        )
-      })
+      try {
+        const action = await this.props.fetchDraft(this.props.match.params.id)
+        this.setState({
+          editorState: EditorState.createWithContent(
+            ContentState.createFromText(action.draft.content)
+          )
+        })
+      } catch (error) {
+        console.error('Error fetching a draft: ', error)
+      }
     } else {
       this.setState({
         editorState: EditorState.createEmpty()
@@ -78,8 +82,17 @@ class TextEditor extends Component {
       .getCurrentContent()
       .getPlainText('\u0001')
 
-    await this.props.createSentimentAnalysis(text)
-    await this.props.createMinimizingWords(text)
+    try {
+      await this.props.createSentimentAnalysis(text)
+    } catch (error) {
+      console.error('Error creating the sentiment analysis: ', error)
+    }
+
+    try {
+      await this.props.createMinimizingWords(text)
+    } catch (error) {
+      console.error('Error creating the minimizing words: ', error)
+    }
 
     const terms = this.props.words.map(element => element.word)
     const instance = new Mark(document.querySelector('.text-editor'))
