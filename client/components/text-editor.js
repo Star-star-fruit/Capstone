@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 import {updateExistingDraft, fetchDraft} from '../store/singleDraft'
 import {postNewDraft} from '../store/drafts'
 import {withRouter} from 'react-router-dom'
+import throttle from 'lodash.throttle'
 
 class TextEditor extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class TextEditor extends Component {
     }
     this.onEditorStateChange = this.onEditorStateChange.bind(this)
     this.analyze = this.analyze.bind(this)
+    this.saveContentThrottled = throttle(this.saveContent, 5000)
   }
 
   saveContent = contentState => {
@@ -41,7 +43,7 @@ class TextEditor extends Component {
 
   onEditorStateChange(editorState) {
     const contentState = editorState.getCurrentContent()
-    this.saveContent(contentState) //---> //NEED TO IMPLEMENT LODASH/DEBOUNCING TO PREVENT SAVING WITH EVERY KEYSTROKE
+    this.saveContentThrottled(contentState)
     this.setState({editorState})
   }
 
