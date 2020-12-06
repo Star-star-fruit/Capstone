@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  background-color: rgb(210, 247, 212);
 }
 
 a {
@@ -25,15 +26,26 @@ mark {
   color: inherit;
 }
 
+#container {
+  background-color: rgb(212, 240, 209);
+}
+
+.text-editor-parent {
+  display: block;
+}
+
 .text-editor {
   display: flex;
-  /* align-content: space-around; */
+  padding: 0.25em;
+  /* background-color: white; */
   justify-content: center;
-  width: 60%;
-  height: 15rem;
+  width: 50rem;
+  height: 25rem;
+  overflow: hidden;
+  box-sizing: border-box;
   border: gray;
   border-style: solid;
-  margin-left: 20%;
+  margin-left: 15%;
   margin-right: 20%;
 }
 
@@ -926,13 +938,13 @@ mark {
 .rdw-editor-main {
   height: 100%;
   overflow: auto;
-  border: auto;
+  /* border: auto; */
   box-sizing: border-box;
 }
 .rdw-editor-toolbar {
   padding: 6px 5px 0;
   border-radius: 2px;
-  border: 1px solid #f1f1f1;
+  border: 1px solid #dfd7d79a;
   display: flex;
   justify-content: flex-start;
   background: white;
@@ -948,7 +960,7 @@ mark {
   outline: none;
 }
 .rdw-editor-wrapper {
-  box-sizing: content-box;
+  box-sizing: content-box; /*/OR border-box?/*/
 }
 .rdw-editor-main blockquote {
   border-left: 5px solid #f1f1f1;
@@ -976,12 +988,14 @@ mark {
 .public-DraftEditor-content {
   height: inherit;
   text-align: initial;
+  overflow: auto;
 }
 .public-DraftEditor-content[contenteditable='true'] {
   -webkit-user-modify: read-write-plaintext-only;
 }
 .DraftEditor-root {
   position: relative;
+  background-color: white;
 }
 .DraftEditor-editorContainer {
   background-color: rgba(255, 255, 255, 0);

@@ -108,34 +108,36 @@ class TextEditor extends Component {
     const editorState = this.state.editorState
 
     return (
-      <div className="text-editor-parent">
-        <div className="text-editor">
-          <Editor
-            editorState={editorState}
-            toolbarClassName="toolbar-class"
-            wrapperClassName="wrapper-class"
-            editorClassName="editorClassName"
-            onEditorStateChange={this.onEditorStateChange}
-          />
-        </div>
-        <button type="button" onClick={this.analyze}>
-          Analyze
-        </button>
-        <br /> <br />
-        <button
-          type="button"
-          onClick={() => {
-            this.saveContent(editorState.getCurrentContent())
-          }}
-        >
-          Save draft
-        </button>
-        <div>
-          {this.state.showScore
-            ? `Your text obtained a score of ${Math.floor(
-                this.props.sentiment.score * 100
-              ) / 100} with ${this.props.words.length} minimizing words!`
-            : undefined}
+      <div id="container">
+        <div className="text-editor-parent">
+          <div className="text-editor">
+            <Editor
+              editorState={editorState}
+              toolbarClassName="toolbar-class"
+              wrapperClassName="wrapper-class"
+              editorClassName="editorClassName"
+              onEditorStateChange={this.onEditorStateChange}
+            />
+          </div>
+          <button type="button" onClick={this.analyze}>
+            Analyze
+          </button>
+          <br /> <br />
+          <button
+            type="button"
+            onClick={() => {
+              this.saveContent(editorState.getCurrentContent())
+            }}
+          >
+            Save draft
+          </button>
+          <div>
+            {this.state.showScore
+              ? `Your text obtained a score of ${Math.floor(
+                  this.props.sentiment.score * 100
+                ) / 100} with ${this.props.words.length} minimizing words!`
+              : undefined}
+          </div>
         </div>
       </div>
     )
