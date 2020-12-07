@@ -37,41 +37,6 @@ mark {
   margin-right: 20%;
 }
 
-#home-image-wrapper {
-  position: relative;
-  max-width: 100%;
-  margin-left: -5.35%;
-  margin-top: -2.7%;
-}
-
-/* .home-main-img {
-  position: fixed;
-  width: 50%;
-  height: 50%;
-  background-size: cover;
-} */
-
-#home-text {
-  position: absolute;
-  top: 80px;
-  left: 8%;
-  width: 50%;
-  display: inline;
-  text-align: left;
-  color: white;
-}
-
-.home-about-img {
-  width: 15%;
-}
-.wordCloud {
-  display: flex;
-  justify-content: center;
-  margin-left: 30%;
-  margin-right: 30%;
-  width: 25%;
-}
-
 /* EDITOR STYLES COPIED FROM /node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css */
 
 .rdw-option-wrapper {
