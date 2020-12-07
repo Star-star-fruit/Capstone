@@ -13,13 +13,12 @@ class MyAccount extends React.Component {
       <div>
         <Grid container spacing={3}>
           <Grid item xs={12}>
+            <h3>
+              <div className="myaccount"> Welcome back! </div>
+            </h3>
             <Paper>
-              <img
-                className="wordCloud"
-                src="https://ak.picdn.net/shutterstock/videos/34708162/thumb/10.jpg"
-              />
+              <img className="wordCloud" src="/images/cloud3.png" />
             </Paper>
-
             <Paper>
               <Drafts />
             </Paper>

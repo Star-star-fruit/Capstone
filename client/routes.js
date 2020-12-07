@@ -8,7 +8,8 @@ import {
   UserHome,
   Home,
   TextEditorContainer,
-  MyAccount
+  MyAccount,
+  SingleDraft
 } from './components'
 import {me} from './store'
 
@@ -37,8 +38,13 @@ class Routes extends Component {
             <Switch>
               {/* Routes placed here are only available after logging in */}
               <Route exact path="/home" component={UserHome} />
-              <Route path="/texteditor/:id" component={TextEditorContainer} />
-              <Route path="/myaccount" component={MyAccount} />
+              <Route
+                exact
+                path="/texteditor/:id"
+                component={TextEditorContainer}
+              />
+              <Route exact path="/drafts" component={MyAccount} />
+              <Route exact path="/drafts/:draftId" component={SingleDraft} />
             </Switch>
           )}
         </Switch>

@@ -111,10 +111,26 @@ const startListening = () => {
 const syncDb = () => db.sync()
 
 async function bootApp() {
-  await sessionStore.sync()
-  await syncDb()
-  await createApp()
-  await startListening()
+  try {
+    await sessionStore.sync()
+  } catch (error) {
+    console.error('Error occured while syncing sessionStore: ', error)
+  }
+  try {
+    await syncDb()
+  } catch (error) {
+    console.error('Error occured while syncing database: ', error)
+  }
+  try {
+    await createApp()
+  } catch (error) {
+    console.error('Error occured while creating app: ', error)
+  }
+  try {
+    await startListening()
+  } catch (error) {
+    console.error('Error occured while starting to listen: ', error)
+  }
 }
 // This evaluates as true when this file is run directly from the command line,
 // i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or 'nodemon server', etc)

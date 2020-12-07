@@ -30,21 +30,18 @@ async function seed() {
 
   const emails = await Promise.all([
     Email.create({
-      email:
+      content:
         'Hello, I apologize for arriving 5 minutes late to our meeting, I was walking back from lunch. I was wondering if I could possibly have a one-day extension for the styling of our website. I am no expert in UI design, but it seems like the styles are not applying to some of our components. I feel it is due to a bug. I’m sorry about this delay.',
-      count: 2,
       userId: 1
     }),
     Email.create({
-      email:
+      content:
         'Hi, I don’t know if this is right, but I have found a merge conflict from your pull request that I feel you need you to resolve. It seems like you deleted an important part of our server/index. I just want to let you know so we can continue with our project.',
-      count: 1,
       userId: 2
     }),
     Email.create({
-      email:
+      content:
         'Hello, I have no idea if this is a good point, but I saw an opportunity to organize our styles sheet into smaller files. I believe doing so will prevent future source control conflicts.  Am I making sense? I kind of thought it was a good idea.',
-      count: 1,
       userId: 2
     })
   ])
@@ -130,6 +127,9 @@ async function seed() {
     }),
     Word.create({
       word: 'I have no idea if'
+    }),
+    Word.create({
+      word: 'I should have'
     })
   ])
 
