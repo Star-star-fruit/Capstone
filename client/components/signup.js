@@ -14,7 +14,6 @@ import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
-import Copyright from './copyright'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -123,7 +122,6 @@ const SignUp = props => {
           <Grid container>
             <Grid item xs>
               {' '}
-              <Copyright />
             </Grid>
           </Grid>
         </div>
