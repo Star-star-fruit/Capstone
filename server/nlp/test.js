@@ -42,7 +42,11 @@ async function quickstart() {
   }
 
   // Detects sentiment of entities in the document
-  const [result] = await client.analyzeEntitySentiment({document})
+  try {
+    const [result] = await client.analyzeEntitySentiment({document})
+  } catch (error) {
+    console.error('Error occured while analyzing sentiment: ', error)
+  }
   const entities = result.entities
 
   console.log('Entities and sentiments:')

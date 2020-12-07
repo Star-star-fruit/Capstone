@@ -81,8 +81,17 @@ class TextEditor extends Component {
       .getCurrentContent()
       .getPlainText('\u0001')
 
-    await this.props.createSentimentAnalysis(text)
-    await this.props.createMinimizingWords(text)
+    try {
+      await this.props.createSentimentAnalysis(text)
+    } catch (error) {
+      console.error('Error occured while creating sentiment analysis')
+    }
+
+    try {
+      await this.props.createMinimizingWords(text)
+    } catch (error) {
+      console.error('Error occured while creating minimizing words')
+    }
 
     const terms = this.props.words.map(element => element.word)
     const instance = new Mark(document.querySelector('.text-editor'))
