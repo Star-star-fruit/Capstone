@@ -4,7 +4,7 @@ import {makeStyles} from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
-import {DrawerNavbar, Copyright} from './components'
+import {DrawerNavbar} from './components'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,9 +32,7 @@ const App = () => {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="xl" className={classes.container}>
           <Routes />
-          <Box pt={4}>
-            <Copyright />
-          </Box>
+          <Box pt={4} />
         </Container>
       </main>
     </div>
