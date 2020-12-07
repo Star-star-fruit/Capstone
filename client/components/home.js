@@ -16,21 +16,21 @@ class Home extends Component {
       {
         name: 'Prakruti PK',
         description: 'Hello I am PK',
-        imgUrl: '/images/elisa5.png',
-        linkedInUrl: 'blah',
+        imgUrl: '/images/women.png',
+        linkedInUrl: 'https://github.com/prakruti-pk',
         gitHubUrl: 'https://github.com/prakruti-pk'
       },
       {
         name: 'Elisa Levet',
         description: 'Hello I am Elisa',
-        imgUrl: '/images/elisa5.png',
+        imgUrl: '/images/women.png',
         linkedInUrl: 'https://www.linkedin.com/in/elisa-levet/',
         gitHubUrl: 'https://github.com/elisalevet'
       },
       {
         name: 'Brooke Parsons',
         description: 'Hello I am Brooke',
-        imgUrl: '/images/elisa5.png',
+        imgUrl: '/images/women.png',
         linkedInUrl: 'https://www.linkedin.com/in/brooke-parsons-a09959191/',
         gitHubUrl: 'https://github.com/brookeparsons'
       }
@@ -47,15 +47,17 @@ class Home extends Component {
           >
             <Box>
               <Box id="home-text">
-                <h2>
-                  Reveal and replace the passive <br />
-                  language in your business emails.
-                </h2>
+                <h1>
+                  Reveal and replace the passive language <br />
+                  in your business emails.
+                </h1>
                 <h3>
-                  The text editor made to dismantle the patriarchy. <br />
-                  For women and nonbinary folk to write professional emails
-                  assertively. <br /> Statistically blah blah.{' '}
+                  The text editor made to dismantle the <br /> patriarchy, for
+                  women and nonbinary <br />
+                  folks to write professional emails <br />
+                  assertively. <br />
                 </h3>
+                <br />
                 <Button
                   className={classes.button.textTransform}
                   variant="contained"
@@ -64,11 +66,13 @@ class Home extends Component {
                   Try our text editor
                 </Button>
               </Box>
-              <img
-                className="home-main-img"
-                src="/images/likeABossBkgrnd.png"
-                alt="Person climbing to the top"
-              />
+              <div className="home-main-img">
+                <img
+                  className="home-main-img"
+                  src="/images/likeABossBkgrnd.png"
+                  alt="Person climbing to the top"
+                />
+              </div>
             </Box>
           </Box>
         </div>
@@ -81,7 +85,9 @@ class Home extends Component {
               alt="about us"
             />
           </Box>
-          <Box display="flex" p={2} m={1}>
+        </div>
+        <div className="cards">
+          <Box display="flex" justifyContent="center">
             {creators.map(creator => (
               <Box p={2} m={1} key={creator.name}>
                 <AboutCard creator={creator} />
