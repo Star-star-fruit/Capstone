@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 import {updateExistingDraft, fetchDraft} from '../store/singleDraft'
 import {postNewDraft} from '../store/drafts'
 import {withRouter} from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 
 class TextEditor extends Component {
   constructor(props) {
@@ -116,18 +117,26 @@ class TextEditor extends Component {
             onEditorStateChange={this.onEditorStateChange}
           />
         </div>
-        <button type="button" onClick={this.analyze}>
+        <Button
+          color="primary"
+          variant="contained"
+          type="button"
+          onClick={this.analyze}
+        >
           Analyze
-        </button>
+        </Button>
         <br /> <br />
-        <button
+        <Button
+          color="primary"
+          variant="contained"
           type="button"
           onClick={() => {
             this.saveContent(editorState.getCurrentContent())
           }}
+          href="/drafts"
         >
           Save draft
-        </button>
+        </Button>
         <div>
           {this.state.showScore
             ? `Your text obtained a score of ${Math.floor(
