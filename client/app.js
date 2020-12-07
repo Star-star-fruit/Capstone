@@ -190,7 +190,7 @@ const App = ({handleClick, isLoggedIn}) => {
           {isLoggedIn ? (
             <div>
               <Divider />
-              <ListItem button component={RLink} to="/myaccount">
+              <ListItem button component={RLink} to="/drafts">
                 <ListItemIcon>
                   <ContactMailIcon />
                 </ListItemIcon>
