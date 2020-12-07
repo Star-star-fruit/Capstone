@@ -7,11 +7,6 @@ import {createMuiTheme} from '@material-ui/core/styles'
 
 class Home extends Component {
   render() {
-    const classes = createMuiTheme({
-      button: {
-        textTransform: 'none'
-      }
-    })
     const creators = [
       {
         name: 'Prakruti PK',
@@ -40,7 +35,6 @@ class Home extends Component {
       <div>
         <div>
           <Box
-            id="about-app"
             display="flex"
             justifyContent="space-between"
             id="home-image-wrapper"
@@ -59,7 +53,7 @@ class Home extends Component {
                 </h3>
                 <br />
                 <Button
-                  className={classes.button.textTransform}
+                  // className={classes.button.textTransform}
                   variant="contained"
                   href="/texteditor"
                 >

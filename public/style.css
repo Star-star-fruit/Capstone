@@ -52,60 +52,6 @@ mark {
   margin-right: 20%;
 }
 
-.content {
-  width: 900px;
-  min-width: 200px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-#home-image-wrapper {
-  position: relative;
-  width: 100%;
-  margin-left: -5.35%;
-  margin-top: -2.7%;
-}
-
-/* .home-main-img {
-  position: fixed;
-  width: 50%;
-  height: 50%;
-  background-size: cover;
-} */
-/* .home-main.img {
-  width: 1000%;
-} */
-#home-text {
-  position: absolute;
-  top: 80px;
-  left: 8%;
-  width: 50%;
-  display: inline;
-  text-align: left;
-  color: white;
-}
-
-.home-about-img {
-  width: 15%;
-}
-.wordCloud {
-  display: flex;
-  width: 100%;
-}
-
-.myaccount {
-  text-align: left;
-  color: gray;
-}
-.date {
-  text-align: center;
-}
-/* .cards {
-  display: flex;
-  align-items: center;
-  margin-left: 20%;
-} */
-
 /* EDITOR STYLES COPIED FROM /node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css */
 
 .rdw-option-wrapper {

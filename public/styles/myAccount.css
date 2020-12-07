@@ -1,0 +1,7 @@
+.wordCloud {
+  display: flex;
+  justify-content: center;
+  margin-left: 30%;
+  margin-right: 30%;
+  width: 25%;
+}
