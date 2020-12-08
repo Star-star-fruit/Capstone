@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 const App = () => {
   const classes = useStyles()
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="app">
       <CssBaseline />
       <DrawerNavbar />
       <main className={classes.content}>

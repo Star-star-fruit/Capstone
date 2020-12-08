@@ -19,7 +19,7 @@ class MyAccount extends React.Component {
             <Paper>
               <img className="wordCloud" src="/images/cloud3.png" />
             </Paper>
-            <Paper>
+            <Paper className="myaccount-text">
               <Drafts />
             </Paper>
           </Grid>

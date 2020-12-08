@@ -131,8 +131,14 @@ class TextEditor extends Component {
               wrapperClassName="wrapper-class"
               editorClassName="editorClassName"
               onEditorStateChange={this.onEditorStateChange}
+              toolbar={{
+                inline: {inDropdown: true},
+                history: {inDropdown: true}
+              }}
             />
           </div>
+        </div>
+        <div className="button-analyze">
           <Button
             color="primary"
             variant="contained"
@@ -141,7 +147,8 @@ class TextEditor extends Component {
           >
             Analyze
           </Button>
-          <br /> <br />
+        </div>
+        <div className="button-save">
           <Button
             color="primary"
             variant="contained"
@@ -157,13 +164,14 @@ class TextEditor extends Component {
           >
             Save draft
           </Button>
-          <div>
-            {this.state.showScore
-              ? `Your text obtained a score of ${Math.floor(
+        </div>
+        <div className="text-analysis">
+          {this.state.showScore
+            ? `Analysis of your text:
+                Your text obtained a score of ${Math.floor(
                   this.props.sentiment.score * 100
                 ) / 100} with ${this.props.words.length} minimizing words!`
-              : undefined}
-          </div>
+            : undefined}
         </div>
       </div>
     )
