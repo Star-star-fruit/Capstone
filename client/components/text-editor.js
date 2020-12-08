@@ -12,6 +12,7 @@ import {postNewDraft} from '../store/drafts'
 import {withRouter} from 'react-router-dom'
 import throttle from 'lodash.throttle'
 import Button from '@material-ui/core/Button'
+import Popup from 'react-popup'
 
 class TextEditor extends Component {
   constructor(props) {
@@ -116,9 +117,6 @@ class TextEditor extends Component {
     if (!this.props.match.params.id && this.props.draft.id) {
       this.props.history.push(`/texteditor/${this.props.draft.id}`)
     }
-    // if (!this.state.editorState) {
-    //   return <h3 className="loading">Loading...</h3>
-    // }
     const editorState = this.state.editorState
 
     return (
@@ -156,9 +154,11 @@ class TextEditor extends Component {
             onClick={() => {
               this.saveContent(editorState.getCurrentContent())
               this.props.isLoggedIn
-                ? window.alert('Draft saved!')
-                : window.alert(
-                    'Your draft is saved in the editor. You must log in to archive your draft!'
+                ? Popup.alert(
+                    'Draft saved! You can check it out in your account.'
+                  )
+                : Popup.alert(
+                    'Your draft is currently saved only on this window. To access it anytime, please create an account.'
                   )
             }}
           >
