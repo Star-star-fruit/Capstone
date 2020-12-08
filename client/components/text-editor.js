@@ -63,12 +63,16 @@ class TextEditor extends Component {
         })
       }
     } else if (this.props.isLoggedIn && this.props.match.params.id) {
-      const action = await this.props.fetchDraft(this.props.match.params.id)
-      this.setState({
-        editorState: EditorState.createWithContent(
-          ContentState.createFromText(action.draft.content)
-        )
-      })
+      try {
+        const action = await this.props.fetchDraft(this.props.match.params.id)
+        this.setState({
+          editorState: EditorState.createWithContent(
+            ContentState.createFromText(action.draft.content)
+          )
+        })
+      } catch (error) {
+        console.error('There was a problem fetching a draft: ', error)
+      }
     } else {
       this.setState({
         editorState: EditorState.createEmpty()
