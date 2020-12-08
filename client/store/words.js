@@ -31,7 +31,7 @@ const defaultWords = []
 /**
  * REDUCER
  */
-export default function minimizingWordsReducer(state = defaultWords, action) {
+const words = (state = defaultWords, action) => {
   switch (action.type) {
     case SET_MINIMIZING_WORDS:
       return action.minimizingWords
@@ -39,3 +39,5 @@ export default function minimizingWordsReducer(state = defaultWords, action) {
       return state
   }
 }
+
+export default words

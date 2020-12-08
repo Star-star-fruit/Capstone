@@ -5,6 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
 import {DrawerNavbar} from './components'
+import Popup from 'react-popup'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,6 +35,9 @@ const App = () => {
           <Routes />
           <Box pt={4} />
         </Container>
+        <div className="mm-popup">
+          <Popup />
+        </div>
       </main>
     </div>
   )

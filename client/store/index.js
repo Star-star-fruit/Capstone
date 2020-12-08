@@ -8,7 +8,7 @@ import words from './words'
 import drafts from './drafts'
 import singleDraft from './singleDraft'
 
-const reducer = combineReducers({user, words, sentiment, drafts, singleDraft})
+const reducer = combineReducers({user, sentiment, words, drafts, singleDraft})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
