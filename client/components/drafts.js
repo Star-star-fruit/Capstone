@@ -16,15 +16,14 @@ class Drafts extends React.Component {
 
   render() {
     const drafts = this.props.drafts
-    return (
-      <div>
-        <h3 />
 
-        <Table aria-label="a dense table">
+    return (
+      <React.Fragment>
+        <Table aria-label="a dense table" className="myaccount-table">
           <TableHead>
             <TableRow>
-              <TableCell width="30%" align="center">
-                Date
+              <TableCell align="center">
+                <div className="date-content">Date</div>
               </TableCell>
               <TableCell align="center">Content</TableCell>
               <TableCell> </TableCell>
@@ -34,7 +33,9 @@ class Drafts extends React.Component {
           <TableBody>
             {drafts.map(draft => (
               <TableRow key={draft.id}>
-                <TableCell>{draft.createdAt} </TableCell>
+                <TableCell>
+                  <div className="datecontent">{draft.createdAt}</div>
+                </TableCell>
                 <TableCell>
                   <div className="content">{draft.content} </div>
                 </TableCell>
@@ -55,7 +56,7 @@ class Drafts extends React.Component {
             ))}
           </TableBody>
         </Table>
-      </div>
+      </React.Fragment>
     )
   }
 }
@@ -69,7 +70,6 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     fetchAllDrafts: () => dispatch(fetchDrafts()),
-    // fetchDraft: (draftId) => dispatch(fetchDraft(draftId)),
     deleteDraft: draftId => dispatch(deleteSingleDraft(draftId))
   }
 }

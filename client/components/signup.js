@@ -15,19 +15,6 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Like a Boss
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  )
-}
-
 const useStyles = makeStyles(theme => ({
   root: {
     height: '90vh'
@@ -133,10 +120,7 @@ const SignUp = props => {
           <a href="/auth/google">{displayName} with Google</a>
           <br />
           <Grid container>
-            <Grid item xs>
-              {' '}
-              <Copyright />
-            </Grid>
+            <Grid item xs />
           </Grid>
         </div>
       </Grid>

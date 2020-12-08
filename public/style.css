@@ -26,9 +26,34 @@ mark {
   color: inherit;
 }
 
-#container {
-  background-color: rgb(212, 240, 209);
+.button-analyze {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20%;
+  padding: 10px;
 }
+
+#button-text {
+  display: flex;
+
+  margin-right: 50%;
+}
+
+.button-save {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20%;
+  padding: 10px;
+}
+
+.text-analysis {
+  display: flex;
+  justify-content: center;
+}
+
+/* #container {
+  background-color: white;
+} */
 
 .text-editor-parent {
   display: block;
@@ -43,18 +68,22 @@ mark {
   height: 25rem;
   overflow: hidden;
   box-sizing: border-box;
-  border: gray;
+  border: lightgray;
   border-style: solid;
   margin-left: 15%;
   width: 60%;
-  height: 15rem;
+  height: 30rem;
   margin-left: 20%;
   margin-right: 20%;
+}
+.datecontent {
+  width: 100%;
+  white-space: nowrap;
 }
 
 .content {
   width: 900px;
-  min-width: 200px;
+  min-width: 600px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -66,15 +95,20 @@ mark {
   margin-top: -2.7%;
 }
 
-/* .home-main-img {
-  position: fixed;
-  width: 50%;
-  height: 50%;
-  background-size: cover;
-} */
-/* .home-main.img {
-  width: 1000%;
-} */
+.myaccount-text {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow: auto;
+}
+.home-main-img {
+  width: auto;
+}
+
+.myaccount-table {
+  width: auto;
+  white-space: nowrap;
+}
 #home-text {
   position: absolute;
   top: 80px;
@@ -86,10 +120,12 @@ mark {
 }
 
 .home-about-img {
-  width: 15%;
+  width: 20%;
+  align-items: center;
 }
 .wordCloud {
   display: flex;
+  align-items: center;
   width: 100%;
 }
 
@@ -97,8 +133,16 @@ mark {
   text-align: left;
   color: gray;
 }
-.date {
-  text-align: center;
+
+@media (max-width: 600px) {
+  .myaccount-text {
+    flex: 0 0 50%;
+  }
+}
+@media (min-width: 960px) {
+  .myaccount-text {
+    flex: 0 0 33%;
+  }
 }
 /* .cards {
   display: flex;

@@ -28,20 +28,7 @@ import {Link as RLink} from 'react-router-dom'
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Like a Boss
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  )
-}
-
-const drawerWidth = 240
+const drawerWidth = 200
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -136,7 +123,7 @@ const App = ({handleClick, isLoggedIn}) => {
   //const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="app">
       <CssBaseline />
       <AppBar
         color="default"
@@ -234,9 +221,7 @@ const App = ({handleClick, isLoggedIn}) => {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Routes />
-          <Box pt={4}>
-            <Copyright />
-          </Box>
+          <Box pt={4} />
         </Container>
       </main>
     </div>

@@ -17,18 +17,6 @@ import {makeStyles} from '@material-ui/core/styles'
  * COMPONENT
  */
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Like a Boss
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  )
-}
 // https://images.squarespace-cdn.com/content/v1/51a66d74e4b0d431ae259a9d/1553632747069-0HUMB6E5LG1H46XXNSDC/ke17ZwdGBToddI8pDm48kCrYIuMNMm1GI3vh_7TAIMBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxdri0fPt4wZqcOMTA9H0sn0N0_BMVwYHKKk3Q664sNbnq1ZlorBX2rpVU0RQ6Zarg/image-asset.jpeg?format=1500w
 //https://images.squarespace-cdn.com/content/v1/51a66d74e4b0d431ae259a9d/1553632747069-0HUMB6E5LG1H46XXNSDC/ke17ZwdGBToddI8pDm48kCrYIuMNMm1GI3vh_7TAIMBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxdri0fPt4wZqcOMTA9H0sn0N0_BMVwYHKKk3Q664sNbnq1ZlorBX2rpVU0RQ6Zarg/image-asset.jpeg?format=1500w
 //https://image.freepik.com/free-vector/young-women-with-landscape_25030-43713.jpg
@@ -122,10 +110,7 @@ const AuthForm = props => {
 
           <br />
           <Grid container>
-            <Grid item xs>
-              {' '}
-              <Copyright />
-            </Grid>
+            <Grid item xs />
           </Grid>
         </div>
       </Grid>
