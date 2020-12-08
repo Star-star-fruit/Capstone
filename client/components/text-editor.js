@@ -63,12 +63,16 @@ class TextEditor extends Component {
         })
       }
     } else if (this.props.isLoggedIn && this.props.match.params.id) {
-      const action = await this.props.fetchDraft(this.props.match.params.id)
-      this.setState({
-        editorState: EditorState.createWithContent(
-          ContentState.createFromText(action.draft.content)
-        )
-      })
+      try {
+        const action = await this.props.fetchDraft(this.props.match.params.id)
+        this.setState({
+          editorState: EditorState.createWithContent(
+            ContentState.createFromText(action.draft.content)
+          )
+        })
+      } catch (error) {
+        console.error('There was a problem fetching a draft: ', error)
+      }
     } else {
       this.setState({
         editorState: EditorState.createEmpty()
@@ -81,8 +85,17 @@ class TextEditor extends Component {
       .getCurrentContent()
       .getPlainText('\u0001')
 
-    await this.props.createSentimentAnalysis(text)
-    await this.props.createMinimizingWords(text)
+    try {
+      await this.props.createSentimentAnalysis(text)
+    } catch (error) {
+      console.error('Error occured while creating sentiment analysis')
+    }
+
+    try {
+      await this.props.createMinimizingWords(text)
+    } catch (error) {
+      console.error('Error occured while creating minimizing words')
+    }
 
     const terms = this.props.words.map(element => element.word)
     const instance = new Mark(document.querySelector('.text-editor'))
@@ -142,8 +155,12 @@ class TextEditor extends Component {
             type="button"
             onClick={() => {
               this.saveContent(editorState.getCurrentContent())
+              this.props.isLoggedIn
+                ? window.alert('Draft saved!')
+                : window.alert(
+                    'Your draft is saved in the editor. You must log in to archive your draft!'
+                  )
             }}
-            href="/drafts"
           >
             Save draft
           </Button>
