@@ -148,8 +148,12 @@ class TextEditor extends Component {
             type="button"
             onClick={() => {
               this.saveContent(editorState.getCurrentContent())
+              this.props.isLoggedIn
+                ? window.alert('Draft saved!')
+                : window.alert(
+                    'Your draft is saved in the editor. You must log in to archive your draft!'
+                  )
             }}
-            href="/drafts"
           >
             Save draft
           </Button>
