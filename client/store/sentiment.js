@@ -31,10 +31,7 @@ const defaultAnalysis = {}
 /**
  * REDUCER
  */
-export default function sentimentAnalysisReducer(
-  state = defaultAnalysis,
-  action
-) {
+const sentiment = (state = defaultAnalysis, action) => {
   switch (action.type) {
     case SET_SENTIMENT_ANALYSIS:
       return action.sentimentAnalysis
@@ -42,3 +39,5 @@ export default function sentimentAnalysisReducer(
       return state
   }
 }
+
+export default sentiment

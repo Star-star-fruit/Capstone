@@ -25,7 +25,6 @@ router.put('/:id', async (req, res, next) => {
       }
     })
     email.content = req.body.content
-    console.log('THIS IS EMAIL CONTENT --->', req.body.content)
     await email.save()
     res.json(email)
   } catch (err) {
