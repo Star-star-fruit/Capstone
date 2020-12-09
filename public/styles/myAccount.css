@@ -1,7 +1,14 @@
-.wordCloud {
+/* .wordCloud {
   display: flex;
   justify-content: center;
   margin-left: 30%;
   margin-right: 30%;
   width: 75%;
+} */
+
+.wordCloud {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 4px;
 }
