@@ -1,10 +1,12 @@
 import React from 'react'
-import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import Button from '@material-ui/core/Button'
+import {
+  Button,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  CardActionArea
+} from '@material-ui/core'
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
 import GitHubIcon from '@material-ui/icons/GitHub'
 
@@ -15,22 +17,16 @@ export default function AboutCard(props) {
     <div>
       <Card>
         <CardActionArea>
-          <CardMedia
-            component="img"
-            alt={`About ${name}`}
-            height="70"
-            image={imgUrl}
-            title={`About ${name}`}
-          />
+          <CardMedia component="img" image={imgUrl} title={name} />
           <CardContent>
-            <h3>{name}</h3>
-            <h5>{description}</h5>
+            <h3> {name} </h3>
+            <h5> {description}</h5>
           </CardContent>
           <CardActions>
-            <Button href={linkedInUrl}>
+            <Button size="small" color="primary" href={linkedInUrl}>
               <LinkedInIcon />
             </Button>
-            <Button href={gitHubUrl}>
+            <Button size="small" color="primary" href={gitHubUrl}>
               <GitHubIcon />
             </Button>
           </CardActions>

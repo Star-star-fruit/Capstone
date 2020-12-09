@@ -16,7 +16,6 @@ class Drafts extends React.Component {
 
   render() {
     const drafts = this.props.drafts
-
     return (
       <React.Fragment>
         <Table aria-label="a dense table" className="myaccount-table">
@@ -44,7 +43,7 @@ class Drafts extends React.Component {
                     <Button color="primary">Read</Button>
                   </Link>
                 </TableCell>
-                <TableCell>
+                <TableCell align="right">
                   <Button
                     color="secondary"
                     onClick={() => this.props.deleteDraft(draft.id)}
