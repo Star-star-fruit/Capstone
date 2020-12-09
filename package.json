@@ -15,13 +15,12 @@
     "lint-fix": "npm run lint -- --fix",
     "prepare": "if [ -d .git ]; then npm-merge-driver install; fi",
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
-    "postinstall": "touch secrets.js && npm run build-client",
+    "postinstall": "node capstone_API_key_fileSetup.js && touch secrets.js && npm run build-client",
     "seed": "node script/seed.js",
     "start": "GOOGLE_APPLICATION_CREDENTIALS='capstone_API_key.json' node server",
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
     "start-server": "GOOGLE_APPLICATION_CREDENTIALS='capstone_API_key.json' nodemon server -e html,js,scss --ignore public --ignore client",
-    "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" \"./script/**/*.spec.js\" --require @babel/polyfill --require @babel/register",
-    "preinstall" : "node capstone_API_key_fileSetup.js"
+    "test": "NODE_ENV='test' mocha \"./server/**/*.spec.js\" \"./client/**/*.spec.js\" \"./script/**/*.spec.js\" --require @babel/polyfill --require @babel/register"
   },
   "husky": {
     "hooks": {

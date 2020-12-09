@@ -1,6 +1,6 @@
 body {
   font-family: sans-serif;
-  background-color: rgb(210, 247, 212);
+  background-color: white;
 }
 
 a {
@@ -293,6 +293,13 @@ mark {
 .datecontent {
   width: 100%;
   white-space: nowrap;
+}
+.content {
+  width: 900px;
+  min-width: 300px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 /* .content {
