@@ -130,6 +130,9 @@ const SignUp = props => {
             >
               {displayName}
             </Button>
+            <div className="errorLogin">
+              {error && error.response && <div> {error.response.data} </div>}
+            </div>
           </form>
           <a href="/auth/google">{displayName} with Google</a>
           <br />
