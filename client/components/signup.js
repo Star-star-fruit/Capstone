@@ -51,6 +51,7 @@ const useStyles = makeStyles(theme => ({
 const SignUp = props => {
   const classes = useStyles()
   const {name, displayName, handleSubmit, error} = props
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
