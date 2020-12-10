@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const {Words_InEmail} = require('../db/models')
 
-//GET /api/wordsInEmail
+//GET /api/data
 router.get('/', async (req, res, next) => {
   try {
     const wordsInEmail = await Words_InEmail.findAll({

@@ -185,9 +185,41 @@ class DataVisCloud extends React.Component {
     const color = '#0000FF'
     const blue = 'blue'
     const options = {
-      fontWeight: 'bold'
+      colors: [
+        '#1f77b4',
+        '#ff7f0e',
+        '#2ca02c',
+        '#d62728',
+        '#9467bd',
+        '#8c564b'
+      ],
+      enableTooltip: true,
+      deterministic: false,
+      fontFamily: 'impact',
+      fontSizes: [40, 60],
+      fontStyle: 'normal',
+      fontWeight: 'normal',
+      padding: 1,
+      rotations: 3,
+      rotationAngles: [0, 90],
+      scale: 'sqrt',
+      spiral: 'archimedean',
+      transitionDuration: 1000
     }
-    return <ReactWordcloud words={this.state.words} options={options} />
+    const resizeStyle = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      border: 'solid 1px #ddd',
+      background: '#f0f0f0'
+    }
+    return (
+      <ReactWordcloud
+        words={this.state.words}
+        options={options}
+        style={resizeStyle}
+      />
+    )
   }
 
   render() {
