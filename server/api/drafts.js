@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Email} = require('../db/models')
+const {isAdmin} = require('../api/helper')
 
 router.post('/', async (req, res, next) => {
   try {

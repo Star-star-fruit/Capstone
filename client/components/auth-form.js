@@ -9,13 +9,9 @@ import TextField from '@material-ui/core/TextField'
 import Link from '@material-ui/core/Link'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
-//import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+
 import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
-
-/**
- * COMPONENT
- */
 
 // https://images.squarespace-cdn.com/content/v1/51a66d74e4b0d431ae259a9d/1553632747069-0HUMB6E5LG1H46XXNSDC/ke17ZwdGBToddI8pDm48kCrYIuMNMm1GI3vh_7TAIMBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxdri0fPt4wZqcOMTA9H0sn0N0_BMVwYHKKk3Q664sNbnq1ZlorBX2rpVU0RQ6Zarg/image-asset.jpeg?format=1500w
 //https://images.squarespace-cdn.com/content/v1/51a66d74e4b0d431ae259a9d/1553632747069-0HUMB6E5LG1H46XXNSDC/ke17ZwdGBToddI8pDm48kCrYIuMNMm1GI3vh_7TAIMBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxdri0fPt4wZqcOMTA9H0sn0N0_BMVwYHKKk3Q664sNbnq1ZlorBX2rpVU0RQ6Zarg/image-asset.jpeg?format=1500w
@@ -99,6 +95,9 @@ const AuthForm = props => {
             >
               {displayName}
             </Button>
+            <div className="errorLogin">
+              {error && error.response && <div> {error.response.data} </div>}
+            </div>
           </form>
           <a href="/auth/google">{displayName} with Google</a>
           <br />
