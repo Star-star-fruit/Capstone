@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Email, Word, Words_InEmail} = require('../db/models')
+const {Words_InEmail} = require('../db/models')
 
 //GET /api/wordsInEmail
 router.get('/', async (req, res, next) => {
