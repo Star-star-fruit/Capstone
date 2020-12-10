@@ -18,21 +18,26 @@ router.post('/', async (req, res, next) => {
       )
     })
 
-    //delete Words_InEmail for that particular emailId each time in case it's been typed and backspaced from text
-    await Words_InEmail.destroy({where: {emailId: req.body.emailId}})
-
-    //emailId which is this.props.draft.id is being passed in from front-end in createSentimentAnalysis thunk for wordsinemail.create
     let wordsInEmail = []
-    for (const word of minimizingWords) {
-      const regex = new RegExp(word.word, 'g')
-      const count = req.body.text.match(regex).length
-      const minimizingWordInEmail = await Words_InEmail.create({
-        wordId: word.id,
-        userId: req.user.id,
-        count,
-        emailId: req.body.emailId
-      })
-      wordsInEmail.push(minimizingWordInEmail)
+    if (req.user && req.body.emailId) {
+      //delete Words_InEmail for that particular emailId each time in case it's been typed and backspaced from text
+      await Words_InEmail.destroy({where: {emailId: req.body.emailId}})
+
+      //emailId which is this.props.draft.id is being passed in from front-end in createSentimentAnalysis thunk for wordsinemail.create
+      for (const word of minimizingWords) {
+        const regex = new RegExp(word.word, 'g')
+        let count
+        if (req.body.text.match(regex) !== null) {
+          count = req.body.text.match(regex).length
+        }
+        const minimizingWordInEmail = await Words_InEmail.create({
+          wordId: word.id,
+          userId: req.user.id,
+          count,
+          emailId: req.body.emailId
+        })
+        wordsInEmail.push(minimizingWordInEmail)
+      }
     }
 
     const client = new language.LanguageServiceClient()
@@ -42,8 +47,13 @@ router.post('/', async (req, res, next) => {
     }
     const [result] = await client.analyzeSentiment({document})
     const sentiment = result.documentSentiment
-    const analysis = {minimizingWords, sentiment, wordsInEmail}
-    res.json(analysis)
+    if (req.user && req.body.emailId) {
+      const analysis = {minimizingWords, sentiment, wordsInEmail}
+      res.json(analysis)
+    } else {
+      const analysis = {minimizingWords, sentiment}
+      res.json(analysis)
+    }
   } catch (error) {
     next(error)
   }
