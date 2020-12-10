@@ -23,6 +23,7 @@ class TextEditor extends Component {
     this.onEditorStateChange = this.onEditorStateChange.bind(this)
     this.analyze = this.analyze.bind(this)
     this.saveContentThrottled = throttle(this.saveContent, 5000)
+    this.clearAndSetNewDraft = this.clearAndSetNewDraft.bind(this)
   }
 
   saveContent = contentState => {
@@ -49,6 +50,11 @@ class TextEditor extends Component {
     this.setState({editorState})
   }
 
+  clearAndSetNewDraft() {
+    const editorState = this.state.editorState
+    this.saveContent(editorState.getCurrentContent())
+  }
+
   async componentDidMount() {
     if (!this.props.isLoggedIn) {
       const content = window.localStorage.getItem('content')
@@ -72,7 +78,7 @@ class TextEditor extends Component {
           )
         })
       } catch (error) {
-        console.error('There was a problem fetching a draft: ', error)
+        console.error('There was a problem fetching this draft: ', error)
       }
     } else {
       this.setState({
@@ -87,15 +93,17 @@ class TextEditor extends Component {
       .getPlainText('\u0001')
 
     try {
-      await this.props.createSentimentAnalysis(text)
+      await this.props.createSentimentAnalysis(text, this.props.draft.id)
     } catch (error) {
-      console.error('Error occured while creating sentiment analysis')
+      console.error('There was an error trying to analyze this text!')
     }
 
     try {
-      await this.props.createMinimizingWords(text)
+      await this.props.createMinimizingWords(text, this.props.draft.id)
     } catch (error) {
-      console.error('Error occured while creating minimizing words')
+      console.error(
+        'There was an error trying to identify the minimizing words!'
+      )
     }
 
     const terms = this.props.words.map(element => element.word)
@@ -114,9 +122,13 @@ class TextEditor extends Component {
   }
 
   render() {
-    if (!this.props.match.params.id && this.props.draft.id) {
+    if (this.props.draft.id && !this.props.match.params.id) {
       this.props.history.push(`/texteditor/${this.props.draft.id}`)
     }
+
+    // if (this.props.draft.id && this.props.match.params.id !== this.props.draft.id) {
+    //   this.props.history.push(`/texteditor/${this.props.draft.id}`)
+    // }
     const editorState = this.state.editorState
 
     return (
@@ -165,12 +177,22 @@ class TextEditor extends Component {
             Save draft
           </Button>
         </div>
+        <div className="button-new-draft">
+          <Button
+            color="primary"
+            variant="contained"
+            type="button"
+            onClick={this.clearAndSetNewDraft}
+          >
+            New Draft
+          </Button>
+        </div>
         <div className="text-analysis">
           {this.state.showScore
             ? `Analysis of your text:
                 Your text obtained a score of ${Math.floor(
                   this.props.sentiment.score * 100
-                ) / 100} with ${this.props.words.length} minimizing words!`
+                ) / 1000} with ${this.props.words.length} minimizing words!`
             : undefined}
         </div>
       </div>
@@ -186,8 +208,10 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
-  createSentimentAnalysis: text => dispatch(createSentimentAnalysis(text)),
-  createMinimizingWords: text => dispatch(createMinimizingWords(text)),
+  createSentimentAnalysis: (text, draftId) =>
+    dispatch(createSentimentAnalysis(text, draftId)),
+  createMinimizingWords: (text, draftId) =>
+    dispatch(createMinimizingWords(text, draftId)),
   postNewDraft: draft => dispatch(postNewDraft(draft)),
   updateExistingDraft: draft => dispatch(updateExistingDraft(draft)),
   fetchDraft: draftId => dispatch(fetchDraft(draftId))

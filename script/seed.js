@@ -25,6 +25,12 @@ async function seed() {
       lastName: 'Lavin',
       email: 'paty@hotmail.com',
       password: 'paty'
+    }),
+    User.create({
+      firstName: 'b',
+      lastName: 'b',
+      email: 'b@b.com',
+      password: 'b'
     })
   ])
 
@@ -132,30 +138,6 @@ async function seed() {
       word: 'I should have'
     })
   ])
-
-  const words_inemail = await Promise.all([
-    Words_InEmail.create({
-      wordId: 2,
-      emailId: 1,
-      sentiment: 'negative'
-    }),
-    Words_InEmail.create({
-      wordId: 2,
-      emailId: 2,
-      sentiment: 'negative'
-    }),
-    Words_InEmail.create({
-      wordId: 1,
-      emailId: 2,
-      sentiment: 'negative'
-    }),
-    Words_InEmail.create({
-      wordId: 5,
-      emailId: 1,
-      sentiment: 'negative'
-    })
-  ])
-
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 }

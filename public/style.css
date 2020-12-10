@@ -26,6 +26,14 @@ mark {
   color: inherit;
 }
 
+.errorLogin {
+  text-align: center;
+  align-items: center;
+  font-size: large;
+  color: red;
+  margin-left: 25%;
+}
+
 /*/POPUP STYLING/*/
 
 .mm-popup {
@@ -265,6 +273,13 @@ mark {
   justify-content: center;
 }
 
+.button-new-draft {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20%;
+  padding: 10px;
+}
+
 /* #container {
   background-color: white;
 } */
@@ -302,6 +317,10 @@ mark {
   overflow: hidden;
 }
 
+/* .home-about-img {
+  width: 100%;
+  align-items: center;
+} */
 /* .content {
   width: 900px;
   min-width: 600px;

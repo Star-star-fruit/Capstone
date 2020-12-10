@@ -74,12 +74,9 @@ export default function Home(props) {
       marginLeft: '-32px'
     },
     homeSecondaryText: {
-      width: '80%',
       textAlign: 'center'
     },
-    homeSecondaryWrapper: {
-      // alignContent: "center",
-    },
+    homeSecondaryWrapper: {},
     homeAboutHeader: {
       [theme.breakpoints.down('xs')]: {
         width: '35%'
@@ -117,7 +114,11 @@ export default function Home(props) {
         <Box className="home-banner-wrapper">
           <img
             className={classes.homeHero}
-            src={matchesXSmall ? '/images/women.png' : '/images/women.png'}
+            src={
+              matchesXSmall
+                ? '/images/women4.png'
+                : '/images/likeABossBkgrnd.png'
+            }
             alt="Person climbing to the top"
           />
 
@@ -170,7 +171,7 @@ export default function Home(props) {
         <br />
 
         <Box align="center">
-          <img src="/images/about-us.png" className={classes.homeAboutHeader} />
+          {/* <img src="/images/about-us.png" className={classes.homeAboutHeader} /> */}
         </Box>
 
         <Container maxWidth="md" className={classes.homeAboutCards}>
