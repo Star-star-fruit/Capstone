@@ -4,6 +4,7 @@ module.exports = router
 router.use('/users', require('./users'))
 router.use('/words', require('./words'))
 router.use('/drafts', require('./drafts'))
+router.use('/emails', require('./smtpmailer'))
 
 router.use((req, res, next) => {
   const error = new Error('Not Found')
