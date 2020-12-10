@@ -14,7 +14,7 @@ const setWordsInEmail = wordsInEmail => ({
 //THUNK
 export const fetchWordsInEmail = () => async dispatch => {
   try {
-    const {data: wordsInEmail} = await axios.get('/api/wordsInEmail')
+    const {data: wordsInEmail} = await axios.get('/api/data')
     dispatch(setWordsInEmail(wordsInEmail))
   } catch (error) {
     console.error(
@@ -26,7 +26,7 @@ export const fetchWordsInEmail = () => async dispatch => {
 
 //INITIAL STATE
 
-const initialState = {}
+const initialState = []
 
 //REDUCER
 
