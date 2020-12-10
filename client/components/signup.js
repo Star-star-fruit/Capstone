@@ -14,6 +14,7 @@ import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
+import Snackbar from '@material-ui/core/Snackbar'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -51,6 +52,20 @@ const useStyles = makeStyles(theme => ({
 const SignUp = props => {
   const classes = useStyles()
   const {name, displayName, handleSubmit, error} = props
+  const [open, setOpen] = React.useState(false)
+
+  const handleClick = () => {
+    setOpen(true)
+  }
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+
+    setOpen(false)
+  }
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -116,6 +131,11 @@ const SignUp = props => {
             >
               {displayName}
             </Button>
+            <Snackbar
+              open={true}
+              autoHideDuration={6000}
+              onClose={handleClose}
+            />
           </form>
           <a href="/auth/google">{displayName} with Google</a>
           <br />

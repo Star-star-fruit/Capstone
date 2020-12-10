@@ -8,9 +8,14 @@ const Words_InEmail = db.define('words_inemail', {
   emailId: {
     type: Sequelize.INTEGER
   },
+  userId: {
+    type: Sequelize.INTEGER
+  },
   sentiment: {
     type: Sequelize.ENUM('positive', 'negative', 'neutral')
+  },
+  count: {
+    type: Sequelize.INTEGER
   }
 })
-
 module.exports = Words_InEmail

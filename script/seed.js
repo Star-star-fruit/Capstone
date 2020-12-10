@@ -25,6 +25,12 @@ async function seed() {
       lastName: 'Lavin',
       email: 'paty@hotmail.com',
       password: 'paty'
+    }),
+    User.create({
+      firstName: 'b',
+      lastName: 'b',
+      email: 'b@b.com',
+      password: 'b'
     })
   ])
 
@@ -152,6 +158,27 @@ async function seed() {
     Words_InEmail.create({
       wordId: 5,
       emailId: 1,
+      sentiment: 'negative'
+    }),
+    Words_InEmail.create({
+      wordId: 1,
+      emailId: 1,
+      count: 2,
+      userId: 4,
+      sentiment: 'negative'
+    }),
+    Words_InEmail.create({
+      wordId: 9,
+      emailId: 1,
+      count: 1,
+      userId: 4,
+      sentiment: 'negative'
+    }),
+    Words_InEmail.create({
+      wordId: 4,
+      emailId: 1,
+      count: 1,
+      userId: 4,
       sentiment: 'negative'
     })
   ])
