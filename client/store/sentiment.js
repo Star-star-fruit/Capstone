@@ -16,9 +16,9 @@ const setSentimentAnalysis = sentimentAnalysis => ({
 /**
  * THUNK CREATORS
  */
-export const createSentimentAnalysis = text => async dispatch => {
+export const createSentimentAnalysis = (text, emailId) => async dispatch => {
   try {
-    const {data: analysis} = await axios.post('/api/words', {text})
+    const {data: analysis} = await axios.post('/api/words', {text, emailId})
     dispatch(setSentimentAnalysis(analysis.sentiment))
   } catch (error) {
     console.error('Error occured while getting sentiment analysis --> ', error)
