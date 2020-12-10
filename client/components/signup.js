@@ -51,19 +51,6 @@ const useStyles = makeStyles(theme => ({
 const SignUp = props => {
   const classes = useStyles()
   const {name, displayName, handleSubmit, error} = props
-  const [open, setOpen] = React.useState(false)
-
-  const handleClick = () => {
-    setOpen(true)
-  }
-
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return
-    }
-
-    setOpen(false)
-  }
 
   return (
     <Grid container component="main" className={classes.root}>
