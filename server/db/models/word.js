@@ -6,5 +6,4 @@ const Word = db.define('word', {
     type: Sequelize.STRING
   }
 })
-
 module.exports = Word

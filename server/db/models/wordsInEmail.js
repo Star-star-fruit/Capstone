@@ -15,5 +15,4 @@ const Words_InEmail = db.define('words_inemail', {
     type: Sequelize.INTEGER
   }
 })
-
 module.exports = Words_InEmail

@@ -71,7 +71,6 @@ class Home extends Component {
             </Grid>
             <br />
 
-            <img src="/images/about-us.png" className="home-about-img " />
             <Container maxWidth="md">
               <Grid container spacing={4}>
                 {creators.map(creator => (
