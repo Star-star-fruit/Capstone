@@ -11,9 +11,6 @@ const Words_InEmail = db.define('words_inemail', {
   userId: {
     type: Sequelize.INTEGER
   },
-  sentiment: {
-    type: Sequelize.ENUM('positive', 'negative', 'neutral')
-  },
   count: {
     type: Sequelize.INTEGER
   }

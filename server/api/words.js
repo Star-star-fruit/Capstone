@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const language = require('@google-cloud/language')
 const Sequelize = require('sequelize')
-const {User, Word, Email, Words_InEmail} = require('../db/models')
+const {Word, Words_InEmail} = require('../db/models')
 
 router.post('/', async (req, res, next) => {
   try {
@@ -18,6 +18,23 @@ router.post('/', async (req, res, next) => {
       )
     })
 
+    //delete Words_InEmail for that particular emailId each time in case it's been typed and backspaced from text
+    await Words_InEmail.destroy({where: {emailId: req.body.emailId}})
+
+    //emailId which is this.props.draft.id is being passed in from front-end in createSentimentAnalysis thunk for wordsinemail.create
+    let wordsInEmail = []
+    for (const word of minimizingWords) {
+      const regex = new RegExp(word.word, 'g')
+      const count = req.body.text.match(regex).length
+      const minimizingWordInEmail = await Words_InEmail.create({
+        wordId: word.id,
+        userId: req.user.id,
+        count,
+        emailId: req.body.emailId
+      })
+      wordsInEmail.push(minimizingWordInEmail)
+    }
+
     const client = new language.LanguageServiceClient()
     const document = {
       content: req.body.text,
@@ -25,7 +42,7 @@ router.post('/', async (req, res, next) => {
     }
     const [result] = await client.analyzeSentiment({document})
     const sentiment = result.documentSentiment
-    const analysis = {minimizingWords, sentiment}
+    const analysis = {minimizingWords, sentiment, wordsInEmail}
     res.json(analysis)
   } catch (error) {
     next(error)
