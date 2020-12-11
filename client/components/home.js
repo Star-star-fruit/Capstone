@@ -17,21 +17,21 @@ class Home extends Component {
       {
         name: 'Prakruti PK',
         description: 'Hello I am PK',
-        imgUrl: '/images/cloud3.png',
+        imgUrl: '/images/pk.png',
         linkedInUrl: 'https://www.linkedin.com/in/prakruti-pk/',
         gitHubUrl: 'https://github.com/prakruti-pk'
       },
       {
         name: 'Elisa Levet',
         description: 'Hello I am Elisa',
-        imgUrl: '/images/cloud3.png',
+        imgUrl: '/images/eli2a.png',
         linkedInUrl: 'https://www.linkedin.com/in/elisa-levet/',
         gitHubUrl: 'https://github.com/elisalevet'
       },
       {
         name: 'Brooke Parsons',
         description: 'Hello I am Brooke',
-        imgUrl: '/images/cloud3.png',
+        imgUrl: '/images/brooke.png',
         linkedInUrl: 'https://www.linkedin.com/in/brooke-parsons-a09959191/',
         gitHubUrl: 'https://github.com/brookeparsons'
       }
@@ -41,6 +41,11 @@ class Home extends Component {
       <React.Fragment>
         <div className="firstHome">
           <main>
+            <img
+              className="home-main-img"
+              src="/images/womenB.png"
+              alt="Person climbing to the top"
+            />
             <Container maxWidth="sm">
               <Typography
                 component="h2"
@@ -74,12 +79,13 @@ class Home extends Component {
             <Container maxWidth="md">
               <Grid container spacing={4}>
                 {creators.map(creator => (
-                  <Grid item key={creator.name} xs={12} sm={6} md={4}>
+                  <Grid item key={creator.name} xs={12} sm={5} md={3}>
                     <Card>
                       <CardActionArea>
                         <CardMedia
+                          className="us"
                           component="img"
-                          image="/images/women4.png"
+                          image={creator.imgUrl}
                           title="Image title"
                         />
                         <CardContent>
