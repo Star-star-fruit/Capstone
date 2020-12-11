@@ -5,6 +5,7 @@ import axios from 'axios'
 const SET_DRAFTS = 'SET_DRAFTS'
 export const SET_NEW_DRAFT = 'SET_NEW_DRAFT'
 const DELETE_DRAFT = 'DELETE_DRAFT'
+const SEND_EMAIL = 'SEND_EMAIL'
 
 //ACTION CONSTANTS
 
@@ -26,6 +27,15 @@ export const deleteDraft = draftId => {
   return {
     type: DELETE_DRAFT,
     draftId
+  }
+}
+
+export const sendEmail = (draft, to, subject) => {
+  return {
+    type: SEND_EMAIL,
+    draft,
+    to,
+    subject
   }
 }
 
@@ -74,6 +84,18 @@ export const deleteSingleDraft = draftId => {
       dispatch(deleteDraft(draftId))
     } catch (err) {
       console.error('There was a problem deleting this draft!')
+      console.error(err)
+    }
+  }
+}
+
+export const sendNewEmail = (text, to, subject) => {
+  return async dispatch => {
+    try {
+      const {data: email} = await axios.post('/api/emails', {text, to, subject})
+      dispatch(sendEmail(email))
+    } catch (err) {
+      console.error('There was a problem sending this email!')
       console.error(err)
     }
   }
