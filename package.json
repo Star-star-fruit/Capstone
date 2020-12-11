@@ -63,6 +63,7 @@
     "pg": "^7.9.0",
     "pg-hstore": "^2.3.2",
     "prop-types": "^15.7.2",
+    "re-resizable": "^6.9.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-draft-wysiwyg": "^1.14.5",

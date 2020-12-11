@@ -166,7 +166,6 @@ class TextEditor extends Component {
             type="button"
             onClick={() => {
               this.saveContent(editorState.getCurrentContent())
-              console.log('click')
 
               // this.props.isLoggedIn
               //   ?
