@@ -141,6 +141,15 @@ const DrawerNavbar = ({handleClick, isLoggedIn}) => {
             <MenuIcon color="action" />
           </IconButton>
           <img src="/images/boss.png" alt="logo" width="250" />
+
+          {/* {isLoggedIn? <Typography
+          variant="h6"
+          align="center">
+            Welcome, {}
+
+          </Typography>
+          :undefined
+          } */}
         </Toolbar>
       </AppBar>
       <Drawer
