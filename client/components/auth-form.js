@@ -50,7 +50,8 @@ const useStyles = makeStyles(theme => ({
 }))
 const AuthForm = props => {
   const classes = useStyles()
-  const {name, displayName, handleSubmit, error} = props
+  const {name, displayName, handleSubmit, error, isLoggedIn} = props
+  console.log('IS LOGGED IN', isLoggedIn)
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -128,13 +129,15 @@ const mapLogin = state => {
   return {
     name: 'login',
     displayName: 'Login',
-    error: state.user.error
+    error: state.user.error,
+    isLoggedIn: !!state.user.id
   }
 }
 
 const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
+      //console.log("event",evt)
       evt.preventDefault()
       const formName = evt.target.name
       const email = evt.target.email.value
@@ -153,5 +156,6 @@ AuthForm.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  error: PropTypes.object
+  error: PropTypes.object,
+  isLoggedIn: PropTypes.bool.isRequired
 }

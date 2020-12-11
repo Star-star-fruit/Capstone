@@ -12,7 +12,7 @@ import {postNewDraft} from '../store/drafts'
 import {withRouter} from 'react-router-dom'
 import throttle from 'lodash.throttle'
 import Button from '@material-ui/core/Button'
-import Popup from 'react-popup'
+import Popup from './popup'
 
 class TextEditor extends Component {
   constructor(props) {
@@ -165,13 +165,6 @@ class TextEditor extends Component {
             type="button"
             onClick={() => {
               this.saveContent(editorState.getCurrentContent())
-              this.props.isLoggedIn
-                ? Popup.alert(
-                    'Draft saved! You can check it out in your account.'
-                  )
-                : Popup.alert(
-                    'Your draft is currently saved only on this window. To access it anytime, please create an account.'
-                  )
             }}
           >
             Save draft
