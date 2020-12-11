@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button'
 import Popup from 'reactjs-popup'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 
-const ControlledPopup = props => {
+const ControlledPopup2 = props => {
   const [open, setOpen] = useState(false)
   const handleClickAway = () => {
     setOpen(false)
@@ -19,20 +19,15 @@ const ControlledPopup = props => {
             className="button"
             onClick={() => setOpen(o => !o)}
           >
-            Save Draft
+            Send Email
           </Button>
           {props.isLoggedIn ? (
             <Popup className="my-popup" open={open} closeOnDocumentClick>
-              <div className="modal">
-                Draft saved! You can check it out in your account!
-              </div>
+              <div className="modal">Email sent!</div>
             </Popup>
           ) : (
             <Popup className="my-popup" open={open} closeOnDocumentClick>
-              <div className="modal">
-                Your draft is currently saved only on this window. To access it
-                anytime, please create an account.
-              </div>
+              <div className="modal">Login with Gmail to send your email!</div>
             </Popup>
           )}
         </div>
@@ -41,4 +36,4 @@ const ControlledPopup = props => {
   )
 }
 
-export default ControlledPopup
+export default ControlledPopup2
