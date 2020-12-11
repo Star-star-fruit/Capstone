@@ -8,7 +8,7 @@ import {createSentimentAnalysis} from '../store/sentiment'
 import {createMinimizingWords} from '../store/words'
 import PropTypes from 'prop-types'
 import {updateExistingDraft, fetchDraft} from '../store/singleDraft'
-import {postNewDraft} from '../store/drafts'
+import {postNewDraft, sendNewEmail} from '../store/drafts'
 import {withRouter} from 'react-router-dom'
 import throttle from 'lodash.throttle'
 import Button from '@material-ui/core/Button'
@@ -18,12 +18,16 @@ class TextEditor extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showScore: false
+      showScore: false,
+      to: '',
+      subject: ''
     }
     this.onEditorStateChange = this.onEditorStateChange.bind(this)
     this.analyze = this.analyze.bind(this)
     this.saveContentThrottled = throttle(this.saveContent, 5000)
     this.clearAndSetNewDraft = this.clearAndSetNewDraft.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   saveContent = contentState => {
@@ -53,6 +57,23 @@ class TextEditor extends Component {
   clearAndSetNewDraft() {
     const editorState = this.state.editorState
     this.saveContent(editorState.getCurrentContent())
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    const {to, subject} = this.state
+    this.props.sendNewEmail(this.props.draft.content, to, subject)
+    this.setState(this.getCleanState())
+  }
+
+  getCleanState = () => {
+    return {to: '', subject: ''}
   }
 
   async componentDidMount() {
@@ -133,6 +154,27 @@ class TextEditor extends Component {
 
     return (
       <div id="container">
+        <form id="email-form" onSubmit={this.handleSubmit}>
+          <label htmlFor="email-to">To: </label>
+          <input
+            className="email-to"
+            name="to"
+            type="email"
+            value={this.state.to}
+            onChange={this.handleChange}
+            required
+          />
+          <br />
+          <label htmlFor="email-subject">Subject: </label>
+          <input
+            className="email-subject"
+            name="subject"
+            type="text"
+            value={this.state.subject}
+            onChange={this.handleChange}
+            required
+          />
+        </form>
         <div className="text-editor-parent">
           <div className="text-editor">
             <Editor
@@ -187,6 +229,16 @@ class TextEditor extends Component {
             New Draft
           </Button>
         </div>
+        <div className="button-send">
+          <Button
+            color="primary"
+            variant="contained"
+            type="button"
+            onClick={this.handleSubmit}
+          >
+            Send Mail
+          </Button>
+        </div>
         <div className="text-analysis">
           {this.state.showScore
             ? `Analysis of your text:
@@ -214,7 +266,8 @@ const mapDispatch = dispatch => ({
     dispatch(createMinimizingWords(text, draftId)),
   postNewDraft: draft => dispatch(postNewDraft(draft)),
   updateExistingDraft: draft => dispatch(updateExistingDraft(draft)),
-  fetchDraft: draftId => dispatch(fetchDraft(draftId))
+  fetchDraft: draftId => dispatch(fetchDraft(draftId)),
+  sendNewEmail: (text, to, subject) => dispatch(sendNewEmail(text, to, subject))
 })
 
 TextEditor.propTypes = {

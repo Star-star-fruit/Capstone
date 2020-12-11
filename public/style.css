@@ -280,6 +280,13 @@ mark {
   padding: 10px;
 }
 
+.button-send {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20%;
+  padding: 10px;
+}
+
 /* #container {
   background-color: white;
 } */

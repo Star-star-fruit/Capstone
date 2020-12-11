@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer')
 const {google} = require('googleapis')
 const OAuth2 = google.auth.OAuth2
 
-router.post('/', (req, res, next) => {
+router.post('/', async (req, res, next) => {
   const oauth2Client = new OAuth2(
     process.env.GOOGLE_CLIENT_ID,
     process.env.GOOGLE_CLIENT_SECRET,
@@ -34,15 +34,18 @@ router.post('/', (req, res, next) => {
 
   const mailOptions = {
     from: req.user.email,
-    to: req.body.email,
+    to: req.body.to,
     subject: req.body.subject,
     text: req.body.text
   }
 
-  smtpTransport.sendMail(mailOptions, (error, response) => {
-    error ? res.json(error) : res.json(response)
-    smtpTransport.close()
+  const result = await new Promise((resolve, reject) => {
+    smtpTransport.sendMail(mailOptions, (error, response) => {
+      smtpTransport.close()
+      error ? reject(error) : resolve(response)
+    })
   })
+  res.json(result)
 })
 
 module.exports = router
