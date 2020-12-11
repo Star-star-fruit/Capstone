@@ -287,9 +287,18 @@ mark {
   padding: 10px;
 }
 
-/* #container {
-  background-color: white;
-} */
+#email-form {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: 20%;
+}
+.email-to {
+  width: 45%;
+}
+.email-subject {
+  width: 45%;
+}
 
 .text-editor-parent {
   display: block;
