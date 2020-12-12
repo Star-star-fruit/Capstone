@@ -8,22 +8,28 @@ import {createSentimentAnalysis} from '../store/sentiment'
 import {createMinimizingWords} from '../store/words'
 import PropTypes from 'prop-types'
 import {updateExistingDraft, fetchDraft} from '../store/singleDraft'
-import {postNewDraft} from '../store/drafts'
+import {postNewDraft, sendNewEmail} from '../store/drafts'
 import {withRouter} from 'react-router-dom'
 import throttle from 'lodash.throttle'
 import Button from '@material-ui/core/Button'
-import Popup from 'react-popup'
+import ControlledPopup from './Popup'
+import ControlledPopup2 from './popup-email'
 
 class TextEditor extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showScore: false
+      showScore: false,
+      to: '',
+      subject: '',
+      emailSent: false
     }
     this.onEditorStateChange = this.onEditorStateChange.bind(this)
     this.analyze = this.analyze.bind(this)
     this.saveContentThrottled = throttle(this.saveContent, 5000)
     this.clearAndSetNewDraft = this.clearAndSetNewDraft.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   saveContent = contentState => {
@@ -53,6 +59,23 @@ class TextEditor extends Component {
   clearAndSetNewDraft() {
     const editorState = this.state.editorState
     this.saveContent(editorState.getCurrentContent())
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    const {to, subject} = this.state
+    this.props.sendNewEmail(this.props.draft.content, to, subject)
+    this.setState({
+      to: '',
+      subject: '',
+      emailSent: true
+    })
   }
 
   async componentDidMount() {
@@ -132,7 +155,45 @@ class TextEditor extends Component {
     const editorState = this.state.editorState
 
     return (
-      <div id="container">
+      <div id="form">
+        <div className="form2">
+          <div className="button-new-draft">
+            <Button
+              color="primary"
+              variant="contained"
+              type="button"
+              onClick={this.clearAndSetNewDraft}
+            >
+              New Draft
+            </Button>
+          </div>
+          <form id="email-form" onSubmit={this.handleSubmit}>
+            <label htmlFor="email-to">
+              <strong>To:</strong>
+            </label>
+            <input
+              className="email-to"
+              name="to"
+              type="email"
+              value={this.state.to}
+              onChange={this.handleChange}
+              required
+            />
+            <br />
+            <label htmlFor="email-subject">
+              <strong>Subject:</strong>{' '}
+            </label>
+            <input
+              className="email-subject"
+              name="subject"
+              type="text"
+              value={this.state.subject}
+              onChange={this.handleChange}
+              required
+            />
+          </form>
+        </div>
+        <br />
         <div className="text-editor-parent">
           <div className="text-editor">
             <Editor
@@ -148,52 +209,71 @@ class TextEditor extends Component {
             />
           </div>
         </div>
-        <div className="button-analyze">
-          <Button
-            color="primary"
-            variant="contained"
-            type="button"
-            onClick={this.analyze}
-          >
-            Analyze
-          </Button>
+        <div className="buttons">
+          <div className="button-analyze">
+            <Button
+              color="secondary"
+              variant="contained"
+              type="button"
+              onClick={this.analyze}
+            >
+              Analyze
+            </Button>{' '}
+            <span />
+            <ControlledPopup
+              isLoggedIn={this.props.isLoggedIn}
+              trigger={
+                <Button
+                  onClick={() => {
+                    this.saveContent(editorState.getCurrentContent())
+                  }}
+                />
+              }
+            />
+          </div>
+          <div className="button-save" />
         </div>
-        <div className="button-save">
+        <div className="button-send">
           <Button
             color="primary"
             variant="contained"
             type="button"
-            onClick={() => {
-              this.saveContent(editorState.getCurrentContent())
-              this.props.isLoggedIn
-                ? Popup.alert(
-                    'Draft saved! You can check it out in your account.'
-                  )
-                : Popup.alert(
-                    'Your draft is currently saved only on this window. To access it anytime, please create an account.'
-                  )
-            }}
+            onClick={this.handleSubmit}
           >
-            Save draft
+            Send Mail
           </Button>
-        </div>
-        <div className="button-new-draft">
-          <Button
-            color="primary"
-            variant="contained"
-            type="button"
-            onClick={this.clearAndSetNewDraft}
-          >
-            New Draft
-          </Button>
+          {this.emailSent ? (
+            <ControlledPopup2
+              isLoggedIn={this.props.isLoggedIn}
+              trigger={<Button onClick={this.handleSubmit} />}
+            />
+          ) : (
+            undefined
+          )}
         </div>
         <div className="text-analysis">
-          {this.state.showScore
-            ? `Analysis of your text:
-                Your text obtained a score of ${Math.floor(
-                  this.props.sentiment.score * 100
-                ) / 1000} with ${this.props.words.length} minimizing words!`
-            : undefined}
+          {this.state.showScore ? (
+            <table className="analysis-table">
+              <thead>
+                <tr>
+                  <td>
+                    <strong> This is the analysis of your text</strong>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Your text obtained a score of{' '}
+                    {Math.floor(this.props.sentiment.score * 100) / 1000} with{' '}
+                    {this.props.words.length} minimizing words!
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          ) : (
+            undefined
+          )}
         </div>
       </div>
     )
@@ -214,7 +294,8 @@ const mapDispatch = dispatch => ({
     dispatch(createMinimizingWords(text, draftId)),
   postNewDraft: draft => dispatch(postNewDraft(draft)),
   updateExistingDraft: draft => dispatch(updateExistingDraft(draft)),
-  fetchDraft: draftId => dispatch(fetchDraft(draftId))
+  fetchDraft: draftId => dispatch(fetchDraft(draftId)),
+  sendNewEmail: (text, to, subject) => dispatch(sendNewEmail(text, to, subject))
 })
 
 TextEditor.propTypes = {

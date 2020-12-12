@@ -30,6 +30,7 @@ router.post('/', async (req, res, next) => {
         if (req.body.text.match(regex) !== null) {
           count = req.body.text.match(regex).length
         }
+
         const minimizingWordInEmail = await Words_InEmail.create({
           wordId: word.id,
           userId: req.user.id,

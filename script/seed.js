@@ -102,9 +102,6 @@ async function seed() {
       word: 'Am I making sense'
     }),
     Word.create({
-      word: 'am I making sense'
-    }),
-    Word.create({
       word: "I don't know if this is right"
     }),
     Word.create({

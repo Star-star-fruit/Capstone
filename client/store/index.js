@@ -7,7 +7,7 @@ import sentiment from './sentiment'
 import words from './words'
 import drafts from './drafts'
 import singleDraft from './singleDraft'
-import wordsInEmail from './wordsInEmail'
+import wordData from './wordData'
 
 const reducer = combineReducers({
   user,
@@ -15,7 +15,7 @@ const reducer = combineReducers({
   words,
   drafts,
   singleDraft,
-  wordsInEmail
+  wordData
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))

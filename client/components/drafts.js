@@ -8,6 +8,7 @@ import TableRow from '@material-ui/core/TableRow'
 import {fetchDrafts, deleteSingleDraft} from '../store/drafts'
 import {Link} from 'react-router-dom'
 import Button from '@material-ui/core/Button'
+import {Paper} from '@material-ui/core'
 
 class Drafts extends React.Component {
   componentDidMount() {
@@ -18,43 +19,47 @@ class Drafts extends React.Component {
     const drafts = this.props.drafts
     return (
       <React.Fragment>
-        <Table aria-label="a dense table" className="myaccount-table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center">
-                <div className="date-content">Date</div>
-              </TableCell>
-              <TableCell align="center">Content</TableCell>
-              <TableCell> </TableCell>
-              <TableCell> </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {drafts.map(draft => (
-              <TableRow key={draft.id}>
-                <TableCell>
-                  <div className="datecontent">{draft.createdAt}</div>
+        {drafts.length === 0 ? (
+          <>You have no drafts yet! Save some in the text editor. </>
+        ) : (
+          <Table aria-label="a dense table" className="myaccount-table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center">
+                  <div className="date-content">Date</div>
                 </TableCell>
-                <TableCell>
-                  <div className="content">{draft.content} </div>
-                </TableCell>
-                <TableCell>
-                  <Link to={`/drafts/${draft.id}`}>
-                    <Button color="primary">Read</Button>
-                  </Link>
-                </TableCell>
-                <TableCell align="right">
-                  <Button
-                    color="secondary"
-                    onClick={() => this.props.deleteDraft(draft.id)}
-                  >
-                    Delete
-                  </Button>
-                </TableCell>
+                <TableCell align="center">Content</TableCell>
+                <TableCell> </TableCell>
+                <TableCell> </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHead>
+            <TableBody>
+              {drafts.map(draft => (
+                <TableRow key={draft.id}>
+                  <TableCell>
+                    <div className="datecontent">{draft.createdAt}</div>
+                  </TableCell>
+                  <TableCell>
+                    <div className="content">{draft.content}</div>
+                  </TableCell>
+                  <TableCell>
+                    <Link to={`/drafts/${draft.id}`}>
+                      <Button color="primary">Read</Button>
+                    </Link>
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      color="secondary"
+                      onClick={() => this.props.deleteDraft(draft.id)}
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        )}
       </React.Fragment>
     )
   }

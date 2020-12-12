@@ -12,37 +12,42 @@ import {
 import {createMuiTheme, ThemeProvider, useTheme} from '@material-ui/core/styles'
 import AboutCard from './about-card'
 
-export default function Home(props) {
+const Home = props => {
   const creators = [
     {
       name: 'Prakruti PK',
       description: 'Hello I am PK',
-      imgUrl: '/images/women.jpg',
+      imgUrl: '/images/Woman_3.jpeg',
       linkedInUrl: 'https://www.linkedin.com/in/prakruti-pk/',
       gitHubUrl: 'https://github.com/prakruti-pk'
     },
     {
       name: 'Elisa Levet',
       description: 'Hello I am Elisa',
-      imgUrl: '/images/women.jpg',
+      imgUrl: '/images/Woman_2.jpeg',
       linkedInUrl: 'https://www.linkedin.com/in/elisa-levet/',
       gitHubUrl: 'https://github.com/elisalevet'
     },
     {
       name: 'Brooke Parsons',
       description: 'Hello I am Brooke',
-      imgUrl: '/images/women.jpg',
+      imgUrl: '/images/Woman_1.jpeg',
       linkedInUrl: 'https://www.linkedin.com/in/brooke-parsons-a09959191/',
       gitHubUrl: 'https://github.com/brookeparsons'
     }
   ]
 
   const useStyles = makeStyles(theme => ({
+    Typography: {
+      fontFamily: 'Roboto'
+    },
     homePrimaryText: {
-      color: 'white',
+      color: '#F0F0F0',
+      fontWeight: 500,
       [theme.breakpoints.down('xs')]: {
         display: 'inline',
-        textAlign: 'left'
+        textAlign: 'left',
+        color: '#303030'
         //left, top, and width have no effect in the homePrimaryText class
         // left: "-10%",
       },
@@ -57,10 +62,14 @@ export default function Home(props) {
       top: '0%',
       left: '0%',
       width: '50%',
-      [theme.breakpoints.down('xs')]: {
-        top: '0%',
+      [theme.breakpoints.down('600')]: {
+        top: '50%',
         left: '0%',
         width: '70%'
+      },
+      [theme.breakpoints.only('600')]: {
+        top: '-10px',
+        left: '-10px%'
       },
       [theme.breakpoints.only('sm')]: {
         top: '0%',
@@ -69,9 +78,24 @@ export default function Home(props) {
       }
     },
     homeHero: {
-      width: '100%',
+      width: '107%',
       marginTop: '-32px',
-      marginLeft: '-32px'
+      marginLeft: '-32px',
+      [theme.breakpoints.down('920')]: {
+        width: '110%'
+      },
+      [theme.breakpoints.down('680')]: {
+        width: '115%'
+      },
+      [theme.breakpoints.down('600')]: {
+        width: '113%'
+      },
+      [theme.breakpoints.down('445')]: {
+        width: '118%'
+      },
+      [theme.breakpoints.down('350')]: {
+        width: '122%'
+      }
     },
     homeSecondaryText: {
       textAlign: 'center'
@@ -92,21 +116,23 @@ export default function Home(props) {
       }
     },
     homeAboutCards: {
+      width: '55%',
       [theme.breakpoints.down('xs')]: {
-        width: '55%'
+        width: '45%'
       },
       [theme.breakpoints.only('sm')]: {
-        width: '70%'
+        width: '50%'
       }
     }
   }))
   const classes = useStyles()
   const theme = useTheme()
+  const matchesIphoneX = useMediaQuery(theme.breakpoints.down('375'))
   const matchesXSmall = useMediaQuery(theme.breakpoints.down('xs'))
   const matchesSmall = useMediaQuery(theme.breakpoints.down('sm'))
   const matchesMedium = useMediaQuery(theme.breakpoints.down('md'))
-  const matchesLarge = useMediaQuery(theme.breakpoints.down('lg'))
-  const matchesXLarge = useMediaQuery(theme.breakpoints.down('xl'))
+  const matchesLarge = useMediaQuery(theme.breakpoints.up('lg'))
+  const matchesBannerMin = useMediaQuery(theme.breakpoints.up('600'))
 
   return (
     <React.Fragment>
@@ -116,54 +142,116 @@ export default function Home(props) {
             className={classes.homeHero}
             src={
               matchesXSmall
-                ? '/images/women4.png'
-                : '/images/likeABossBkgrnd.png'
+                ? '/images/womenB_cropped.png'
+                : '/images/womenB.png'
             }
             alt="Person climbing to the top"
           />
-
-          <Container
-            className="home-banner-content"
-            left={matchesXSmall ? '-20%' : undefined}
-            width={matchesXSmall ? '50%' : undefined}
-          >
+          <Container className="home-banner-content">
             <div position="absolute" className={classes.homeBannerContent}>
-              <Typography
-                className={classes.homePrimaryText}
-                variant={matchesXSmall ? 'h6' : 'h5'}
-                align="center"
-                color="textPrimary"
-                gutterBottom
-              >
-                Reveal and replace the passive language in your business emails.
-              </Typography>
-
-              <br />
-              <Grid container justify="center">
-                <Grid item>
-                  <Button variant="contained" href="/texteditor" align="center">
-                    Try our text editor
-                  </Button>
-                </Grid>
-              </Grid>
-              <br />
+              <Container maxWidth="sm">
+                {//display main text over banner only when screen > 420px wide
+                matchesBannerMin ? (
+                  <div>
+                    <Typography
+                      className={classes.homePrimaryText}
+                      variant={matchesSmall ? 'h5' : 'h4'}
+                      align="center"
+                      color="textPrimary"
+                      gutterBottom
+                    >
+                      Reveal and replace the passive language in your business
+                      emails.
+                    </Typography>
+                    <br />
+                    <Grid container justify="center">
+                      <Grid item>
+                        <Button
+                          variant="contained"
+                          href="/texteditor"
+                          align="center"
+                        >
+                          Try our text editor
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  </div>
+                ) : (
+                  <span />
+                )}
+              </Container>
+              {matchesLarge ? (
+                <div>
+                  <br />
+                  <Typography
+                    //className={classes.homeSecondaryText}
+                    variant="h5"
+                    align="center"
+                    paragraph
+                  >
+                    The text editor made to dismantle the patriarchy, for women
+                    and nonbinary folks to write professional emails
+                    assertively.
+                  </Typography>
+                </div>
+              ) : (
+                <div> </div>
+              )}
             </div>
           </Container>
         </Box>
 
         <br />
-        <br />
+        {//display main text over banner only when screen > 420px wide
+        matchesBannerMin ? (
+          <span />
+        ) : (
+          <div>
+            <Typography
+              //className={classes.homePrimaryText}
+              variant={matchesSmall ? 'h5' : 'h4'}
+              align="center"
+              color="textPrimary"
+              gutterBottom
+            >
+              Reveal and replace the passive language in your business emails.
+            </Typography>
+            <br />
+            <Grid container justify="center">
+              <Grid item>
+                <Button variant="contained" href="/texteditor" align="center">
+                  Try our text editor
+                </Button>
+              </Grid>
+            </Grid>
+          </div>
+        )}
+
+        {matchesLarge ? (
+          <div> </div>
+        ) : (
+          <div>
+            <br />
+            <Typography
+              //className={classes.homeSecondaryText}
+              variant={matchesSmall ? 'h6' : 'h5'}
+              align="center"
+              paragraph
+            >
+              The text editor made to dismantle the patriarchy, for women and
+              nonbinary folks to write professional emails assertively.
+            </Typography>
+          </div>
+        )}
 
         <Paper className={classes.homeSecondaryWrapper}>
           <Typography
             className={classes.homeSecondaryText}
-            variant={matchesXSmall ? 'h6' : 'h5'}
+            variant={matchesXSmall ? 'body1' : 'h6'}
             align="center"
             color="textSecondary"
-            paragraph
           >
-            The text editor made to dismantle the patriarchy, for women and
-            nonbinary folks to write professional emails assertively.
+            About the use of passive language amoung women and nonbinary folks.
           </Typography>
         </Paper>
 
@@ -171,11 +259,11 @@ export default function Home(props) {
         <br />
 
         <Box align="center">
-          {/* <img src="/images/about-us.png" className={classes.homeAboutHeader} /> */}
+          <img src="/images/about-us.png" className={classes.homeAboutHeader} />
         </Box>
 
-        <Container maxWidth="md" className={classes.homeAboutCards}>
-          <Grid container spacing={8}>
+        <Container maxWidth="sm" className={classes.homeAboutCards}>
+          <Grid container spacing={4}>
             {creators.map(creator => (
               <Grid item key={creator.name} xs={12} sm={6} md={4}>
                 <AboutCard creator={creator} />
@@ -188,59 +276,4 @@ export default function Home(props) {
   )
 }
 
-// <div className="home">
-//   <div>
-//     <div>
-//       <Box
-//         id="about-app"
-//         display="flex"
-//         justifyContent="space-between"
-//         id="home-image-wrapper"
-//       >
-//         <Box>
-//           <Box id="home-text">
-//             <h1>
-//               Reveal and replace the passive language <br />
-//               in your business emails.
-//             </h1>
-//             <h3>
-//               The text editor made to dismantle the <br /> patriarchy, for
-//               women and nonbinary <br />
-//               folks to write professional emails <br />
-//               assertively. <br />
-//             </h3>
-//             <br />
-//             <Button variant="contained" href="/texteditor">
-//               Try our text editor
-//             </Button>
-//           </Box>
-
-//           <img
-//             className="home-main-img"
-//             src="/images/likeABossBkgrnd.png"
-//             alt="Person climbing to the top"
-//           />
-//         </Box>
-//       </Box>
-//     </div>
-
-//     <div id="about-us">
-//       <Box display="flex" justifyContent="center">
-//         <img
-//           className="home-about-img"
-//           src="/images/about-us.png"
-//           alt="about us"
-//         />
-//       </Box>
-//     </div>
-//     <div className="cards">
-//       <Box display="flex" justifyContent="center">
-//         {creators.map((creator) => (
-//           <Box p={2} m={1} key={creator.name}>
-//             <AboutCard creator={creator} />
-//           </Box>
-//         ))}
-//       </Box>
-//     </div>
-//   </div>
-// </div>
+export default Home
