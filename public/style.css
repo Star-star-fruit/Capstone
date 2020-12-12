@@ -167,12 +167,7 @@ mark {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-#home-image-wrapper {
-  position: relative;
-  width: 100%;
-  margin-left: -5.35%;
-  margin-top: -2.7%;
-}
+
 
 .myaccount-text {
   display: flex;
@@ -198,10 +193,6 @@ mark {
   color: white;
 }
 
-.home-about-img {
-  width: 20%;
-  align-items: center;
-}
 .wordCloud {
   display: flex;
   align-items: center;
@@ -213,16 +204,7 @@ mark {
   color: gray;
 }
 
-@media (max-width: 600px) {
-  .myaccount-text {
-    flex: 0 0 50%;
-  }
-}
-@media (min-width: 960px) {
-  .myaccount-text {
-    flex: 0 0 33%;
-  }
-} */
+*/
 /* .cards {
   display: flex;
   align-items: center;
