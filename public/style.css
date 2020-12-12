@@ -2,30 +2,24 @@ body {
   font-family: sans-serif;
   background-color: white;
 }
-
 a {
   text-decoration: none;
 }
-
 label {
   display: block;
 }
-
 nav a {
   display: inline-block;
   margin: 1em;
 }
-
 form div {
   margin: 1em;
   display: inline-block;
 }
-
 mark {
   background-color: yellow;
   color: inherit;
 }
-
 .errorLogin {
   text-align: center;
   align-items: center;
@@ -33,7 +27,6 @@ mark {
   color: red;
   margin-left: 25%;
 }
-
 .my-popup-content {
   display: flex;
   align-items: flex-end;
@@ -50,11 +43,9 @@ mark {
   width: 200px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
 }
-
 [data-popup='tooltip'].my-popup-overlay {
   background: transparent;
 }
-
 .button-analyze {
   display: flex;
   justify-content: space-between;
@@ -71,37 +62,31 @@ mark {
   display: flex;
   margin-right: 50%;
 }
-
 .form {
   display: flex;
 }
-
 /* .button-save {
   display: flex;
   justify-content: space-between;
   margin-right: 20%;
   padding: 10px;
 } */
-
 .text-analysis {
   display: flex;
   justify-content: center;
 }
-
 .button-new-draft {
   display: flex;
   justify-content: flex-end;
   margin-right: 20%;
   padding: 10px;
 }
-
 .button-send {
   display: flex;
   justify-content: flex-end;
   margin-right: 20%;
   padding: 10px;
 }
-
 #email-form {
   flex-direction: column;
   align-items: center;
@@ -114,11 +99,9 @@ mark {
 .email-subject {
   width: 45%;
 }
-
 .text-editor-parent {
   display: block;
 }
-
 .text-editor {
   display: flex;
   padding: 0.25em;
@@ -128,7 +111,7 @@ mark {
   height: 25rem;
   overflow: hidden;
   box-sizing: border-box;
-  border: lightgray;
+  border-color: lightgray;
   border-style: solid;
   margin-left: 15%;
   width: 60%;
@@ -141,13 +124,28 @@ mark {
   white-space: nowrap;
 }
 .content {
-  width: 900px;
+  display: flex;
+  width: 1000px;
   min-width: 300px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  border-collapse: collapse;
 }
-
+.table {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 3em 0;
+  padding: 0;
+  overflow: auto;
+  display: block;
+  border-collapse: collapse;
+}
+.date-content {
+  font-size: large;
+  font-weight: bold;
+}
 .analysis-table {
   align-items: center;
   flex-direction: center;
@@ -155,6 +153,20 @@ mark {
   border-style: solid;
   border-color: lightgray;
   width: 50%;
+}
+.singleDraft-table {
+  align-items: center;
+  flex-direction: center;
+  text-align: justify;
+  border-style: solid;
+  border-color: #acabc4;
+  width: 80%;
+  padding: 25px;
+}
+.singleDraft-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 /* .home-about-img {
   width: 100%;
