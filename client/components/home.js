@@ -9,7 +9,7 @@ import {
   Box,
   Paper
 } from '@material-ui/core'
-import {createMuiTheme, ThemeProvider, useTheme} from '@material-ui/core/styles'
+import {useTheme} from '@material-ui/core/styles'
 import AboutCard from './about-card'
 
 const Home = props => {
@@ -39,6 +39,7 @@ const Home = props => {
 
   const useStyles = makeStyles(theme => ({
     Typography: {
+      //doesn't apply.
       fontFamily: 'Roboto'
     },
     homePrimaryText: {
@@ -48,8 +49,6 @@ const Home = props => {
         display: 'inline',
         textAlign: 'left',
         color: '#303030'
-        //left, top, and width have no effect in the homePrimaryText class
-        // left: "-10%",
       },
       [theme.breakpoints.down('sm')]: {
         display: 'inline',
@@ -59,12 +58,9 @@ const Home = props => {
     homeBannerContent: {
       //left, top, and width have no effect in the homeBannerContent class !!!!
       //position:absolute (need for text overlay on image) does not work here. must be inside /home.css
-      top: '0%',
-      left: '0%',
       width: '50%',
       [theme.breakpoints.down('600')]: {
         top: '50%',
-        left: '0%',
         width: '70%'
       },
       [theme.breakpoints.only('600')]: {
@@ -72,7 +68,6 @@ const Home = props => {
         left: '-10px%'
       },
       [theme.breakpoints.only('sm')]: {
-        top: '0%',
         left: '30%',
         width: '70%'
       }
