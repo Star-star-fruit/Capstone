@@ -24,14 +24,19 @@ const ControlledPopup = props => {
           {props.isLoggedIn ? (
             <Popup className="my-popup" open={open} closeOnDocumentClick>
               <div className="modal">
-                Draft saved! You can check it out in your account!
+                <strong>
+                  Draft saved! <br />
+                  You can check it out in your account!
+                </strong>
               </div>
             </Popup>
           ) : (
             <Popup className="my-popup" open={open} closeOnDocumentClick>
               <div className="modal">
-                Your draft is currently saved only on this window. To access it
-                anytime, please create an account.
+                <strong>
+                  Your draft is currently saved only on this window. To access
+                  it anytime, please create an account.
+                </strong>
               </div>
             </Popup>
           )}

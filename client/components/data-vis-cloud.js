@@ -17,24 +17,9 @@ class DataVisCloud extends React.Component {
   }
 
   dataVis() {
-    // colors: [
-    //   '#79635D',
-    //   '#8483A7',
-    //   '#53F8CC',
-    //   '#D18686',
-    //   '#C4F686',
-    //   '#8c564b'
-    // ],
     const size = this.props.wordData.length <= 2 ? [60, 80] : [40, 60]
     const options = {
-      colors: [
-        '#1f77b4',
-        '#ff7f0e',
-        '#2ca02c',
-        '#d62728',
-        '#9467bd',
-        '#8c564b'
-      ],
+      colors: ['#AFC2D5', '#CCDDD3', '#ffeaa5', '#40798C'],
       enableTooltip: true,
       deterministic: false,
       fontFamily: 'arial',
@@ -53,8 +38,9 @@ class DataVisCloud extends React.Component {
       alignItems: 'center',
       justifyContent: 'center',
       border: 'solid 1px #ddd',
-      background: '#f0f0f0'
+      background: '#EDE6EF'
     }
+
     return (
       <Resizable
         defaultSize={{

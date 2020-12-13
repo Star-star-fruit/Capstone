@@ -12,10 +12,31 @@ class SingleDraft extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>{this.props.singleDraft.content} </p>
+      <div className="singleDraft-content">
+        <br />
+        <br />
+        <br />
+        <br />
+        <table className="singleDraft-table">
+          <thead>
+            <tr>
+              <td />
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{this.props.singleDraft.content}</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <br />
         <Link to={`/texteditor/${this.props.singleDraft.id}`}>
-          <Button color="secondary">Update</Button>
+          <div className="update-button">
+            <Button color="secondary" className="update-button">
+              Update
+            </Button>
+          </div>
         </Link>
       </div>
     )
