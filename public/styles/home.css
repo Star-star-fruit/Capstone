@@ -1,26 +1,18 @@
-#home-image-wrapper {
+.home-banner-wrapper {
   position: relative;
-  max-width: 100%;
-  margin-left: -5.35%;
-  margin-top: -2.7%;
 }
 
-/* .home-main-img {
-  position: fixed;
-  width: 50%;
-  height: 50%;
-  background-size: cover;
-} */
-#home-text {
+.home-hero-img {
+  width: auto;
+  height: auto;
+}
+
+.home-banner-content {
   position: absolute;
-  top: 80px;
-  left: 8%;
+  left: 5%;
+  top: 10%;
   width: 50%;
   display: inline;
   text-align: left;
   color: white;
-}
-
-.home-about-img {
-  width: 100%;
 }
