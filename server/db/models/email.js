@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 const moment = require('moment-timezone')
+
 const Email = db.define('email', {
   content: {
     type: Sequelize.TEXT
@@ -9,7 +10,7 @@ const Email = db.define('email', {
     type: Sequelize.DATE,
     allowNull: false,
     get() {
-      return moment(this.getDataValue('createdAt')).format('DD/MM/YYYY h:mm:ss')
+      return moment(this.getDataValue('createdAt')).format('DD/MM/YY h:mm A')
     },
     field: 'createdAt'
   },

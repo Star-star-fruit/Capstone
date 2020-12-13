@@ -242,7 +242,7 @@ class TextEditor extends Component {
               type="button"
               onClick={this.handleSubmit}
             >
-              Send Mail
+              Send email
             </Button>
           </Link>
           {/* {this.emailSent ? (

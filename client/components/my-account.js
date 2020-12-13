@@ -33,6 +33,8 @@ class MyAccount extends React.Component {
                 <DataVisCloud />
               )}
             </Paper>
+            <br />
+            <br />
             <Paper className="myaccount-text">
               <Drafts />
             </Paper>

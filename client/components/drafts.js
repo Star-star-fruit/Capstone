@@ -25,7 +25,7 @@ class Drafts extends React.Component {
               <TableHead>
                 <TableRow>
                   <TableCell align="center">
-                    <div className="date-content">Date</div>
+                    <div className="date-content">Date </div>
                   </TableCell>
                   <TableCell align="center">
                     <div className="date-content">Content </div>

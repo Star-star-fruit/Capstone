@@ -2,6 +2,7 @@ body {
   font-family: sans-serif;
   background-color: white;
 }
+
 a {
   text-decoration: none;
 }
@@ -33,8 +34,14 @@ mark {
   align-content: center;
   margin: auto;
   background: #ecfcd8;
-  width: 23%;
-  padding: 10px;
+  width: 25%;
+  padding: 40px;
+  font-size: large;
+  text-align: center;
+  font-style: bold;
+  border-style: solid;
+  border-color: gray;
+  border-radius: 2%;
 }
 .my-popup-arrow {
   color: rgb(255, 255, 255);
@@ -160,68 +167,14 @@ mark {
   text-align: justify;
   border-style: solid;
   border-color: #acabc4;
-  width: 80%;
-  padding: 25px;
+  width: 50%;
+  padding: 40px;
 }
 .singleDraft-content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-/* .home-about-img {
-  width: 100%;
-  align-items: center;
-} */
-/* .content {
-  width: 900px;
-  min-width: 600px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-
-.myaccount-text {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  overflow: auto;
-}
-.home-main-img {
-  width: auto;
-}
-
-.myaccount-table {
-  width: auto;
-  white-space: nowrap;
-}
-#home-text {
-  position: absolute;
-  top: 80px;
-  left: 8%;
-  width: 50%;
-  display: inline;
-  text-align: left;
-  color: white;
-}
-
-.wordCloud {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.myaccount {
-  text-align: left;
-  color: gray;
-}
-
-*/
-/* .cards {
-  display: flex;
-  align-items: center;
-  margin-left: 20%;
-} */
 
 /* EDITOR STYLES COPIED FROM /node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css */
 

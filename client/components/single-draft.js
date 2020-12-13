@@ -13,6 +13,10 @@ class SingleDraft extends React.Component {
   render() {
     return (
       <div className="singleDraft-content">
+        <br />
+        <br />
+        <br />
+        <br />
         <table className="singleDraft-table">
           <thead>
             <tr>
