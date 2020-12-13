@@ -42,6 +42,10 @@ passport.deserializeUser(async (id, done) => {
 })
 
 const createApp = () => {
+  if (process.env.NODE_ENV === 'production') {
+    app.use(enforce.HTTPS({trustProtoHeader: true}))
+  }
+
   // logging middleware
   app.use(morgan('dev'))
 
@@ -66,12 +70,6 @@ const createApp = () => {
   )
   app.use(passport.initialize())
   app.use(passport.session())
-
-  // Use enforce.HTTPS({ trustProtoHeader: true }) in case you are behind
-  // a load balancer (e.g. Heroku). See further comments below
-  if (process.env.NODE_ENV === 'production') {
-    app.use(enforce.HTTPS())
-  }
 
   // auth and api routes
   app.use('/auth', require('./auth'))
