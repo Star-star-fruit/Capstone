@@ -12,7 +12,7 @@ import {postNewDraft, sendNewEmail} from '../store/drafts'
 import {withRouter} from 'react-router-dom'
 import throttle from 'lodash.throttle'
 import Button from '@material-ui/core/Button'
-import ControlledPopup from './Popup'
+import ControlledPopup from './popup'
 import ControlledPopup2 from './popup-email'
 
 class TextEditor extends Component {
