@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 8080
 const app = express()
 const bodyParser = require('body-parser')
 const socketio = require('socket.io')
+const enforce = require('express-sslify')
 
 // This is a global Mocha hook, used for resource cleanup.
 // Otherwise, Mocha v4+ never quits after tests.
@@ -41,6 +42,10 @@ passport.deserializeUser(async (id, done) => {
 })
 
 const createApp = () => {
+  if (process.env.NODE_ENV === 'production') {
+    app.use(enforce.HTTPS({trustProtoHeader: true}))
+  }
+
   // logging middleware
   app.use(morgan('dev'))
 
