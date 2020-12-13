@@ -257,16 +257,26 @@ class TextEditor extends Component {
               <thead>
                 <tr>
                   <td>
-                    <strong> This is the analysis of your text</strong>
+                    <strong> Results:</strong>
                   </td>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>
-                    Your text obtained a score of{' '}
-                    {Math.floor(this.props.sentiment.score * 100) / 1000} with{' '}
-                    {this.props.words.length} minimizing words!
+                    Your text obtained a score of
+                    <strong>
+                      {' '}
+                      {Math.floor(this.props.sentiment.score * 100) / 1000}
+                    </strong>{' '}
+                    with <strong>{this.props.words.length}</strong> minimizing
+                    words!
+                    <br />A score lower than 0 implies an overall negative
+                    sentiment in what you're trying to say, while anything above
+                    0 implies a positive sentiment. If your score is exactly 0
+                    but there are minimizing words identified in your text,
+                    chances are a high positive score from certain words are
+                    cancelling out the negative ones.
                   </td>
                 </tr>
               </tbody>
