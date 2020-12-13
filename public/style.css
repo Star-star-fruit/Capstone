@@ -6,26 +6,21 @@ body {
 a {
   text-decoration: none;
 }
-
 label {
   display: block;
 }
-
 nav a {
   display: inline-block;
   margin: 1em;
 }
-
 form div {
   margin: 1em;
   display: inline-block;
 }
-
 mark {
   background-color: yellow;
   color: inherit;
 }
-
 .errorLogin {
   text-align: center;
   align-items: center;
@@ -33,15 +28,20 @@ mark {
   color: red;
   margin-left: 25%;
 }
-
 .my-popup-content {
   display: flex;
   align-items: flex-end;
   align-content: center;
   margin: auto;
   background: #ecfcd8;
-  width: 23%;
-  padding: 10px;
+  width: 25%;
+  padding: 40px;
+  font-size: large;
+  text-align: center;
+  font-style: bold;
+  border-style: solid;
+  border-color: gray;
+  border-radius: 2%;
 }
 .my-popup-arrow {
   color: rgb(255, 255, 255);
@@ -50,11 +50,9 @@ mark {
   width: 200px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
 }
-
 [data-popup='tooltip'].my-popup-overlay {
   background: transparent;
 }
-
 .button-analyze {
   display: flex;
   justify-content: space-between;
@@ -71,37 +69,31 @@ mark {
   display: flex;
   margin-right: 50%;
 }
-
 .form {
   display: flex;
 }
-
 /* .button-save {
   display: flex;
   justify-content: space-between;
   margin-right: 20%;
   padding: 10px;
 } */
-
 .text-analysis {
   display: flex;
   justify-content: center;
 }
-
 .button-new-draft {
   display: flex;
   justify-content: flex-end;
   margin-right: 20%;
   padding: 10px;
 }
-
 .button-send {
   display: flex;
   justify-content: flex-end;
   margin-right: 20%;
   padding: 10px;
 }
-
 #email-form {
   flex-direction: column;
   align-items: center;
@@ -114,11 +106,9 @@ mark {
 .email-subject {
   width: 45%;
 }
-
 .text-editor-parent {
   display: block;
 }
-
 .text-editor {
   display: flex;
   padding: 0.25em;
@@ -128,7 +118,7 @@ mark {
   height: 25rem;
   overflow: hidden;
   box-sizing: border-box;
-  border: lightgray;
+  border-color: lightgray;
   border-style: solid;
   margin-left: 15%;
   width: 60%;
@@ -141,13 +131,28 @@ mark {
   white-space: nowrap;
 }
 .content {
-  width: 900px;
+  display: flex;
+  width: 1000px;
   min-width: 300px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  border-collapse: collapse;
 }
-
+.table {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 3em 0;
+  padding: 0;
+  overflow: auto;
+  display: block;
+  border-collapse: collapse;
+}
+.date-content {
+  font-size: large;
+  font-weight: bold;
+}
 .analysis-table {
   align-items: center;
   flex-direction: center;
@@ -156,60 +161,20 @@ mark {
   border-color: lightgray;
   width: 50%;
 }
-/* .home-about-img {
-  width: 100%;
+.singleDraft-table {
   align-items: center;
-} */
-/* .content {
-  width: 900px;
-  min-width: 600px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-
-.myaccount-text {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  overflow: auto;
-}
-.home-main-img {
-  width: auto;
-}
-
-.myaccount-table {
-  width: auto;
-  white-space: nowrap;
-}
-#home-text {
-  position: absolute;
-  top: 80px;
-  left: 8%;
+  flex-direction: center;
+  text-align: justify;
+  border-style: solid;
+  border-color: #acabc4;
   width: 50%;
-  display: inline;
-  text-align: left;
-  color: white;
+  padding: 40px;
 }
-
-.wordCloud {
+.singleDraft-content {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  width: 100%;
 }
-
-.myaccount {
-  text-align: left;
-  color: gray;
-}
-
-*/
-/* .cards {
-  display: flex;
-  align-items: center;
-  margin-left: 20%;
-} */
 
 /* EDITOR STYLES COPIED FROM /node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css */
 

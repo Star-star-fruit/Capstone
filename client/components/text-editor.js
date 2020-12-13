@@ -12,7 +12,8 @@ import {postNewDraft, sendNewEmail} from '../store/drafts'
 import {withRouter} from 'react-router-dom'
 import throttle from 'lodash.throttle'
 import Button from '@material-ui/core/Button'
-import ControlledPopup from './popup'
+import Link from '@material-ui/core/Link'
+import ControlledPopup from './Popup'
 import ControlledPopup2 from './popup-email'
 
 class TextEditor extends Component {
@@ -172,12 +173,12 @@ class TextEditor extends Component {
               <strong>To:</strong>
             </label>
             <input
+              required
               className="email-to"
               name="to"
               type="email"
               value={this.state.to}
               onChange={this.handleChange}
-              required
             />
             <br />
             <label htmlFor="email-subject">
@@ -234,22 +235,22 @@ class TextEditor extends Component {
           <div className="button-save" />
         </div>
         <div className="button-send">
-          <Button
-            color="primary"
-            variant="contained"
-            type="button"
-            onClick={this.handleSubmit}
-          >
-            Send Mail
-          </Button>
-          {this.emailSent ? (
+          <Link to="/drafts">
+            <Button
+              color="primary"
+              variant="contained"
+              type="button"
+              onClick={this.handleSubmit}
+            >
+              Send email
+            </Button>
+          </Link>
+          {/* {this.emailSent ? (
             <ControlledPopup2
               isLoggedIn={this.props.isLoggedIn}
               trigger={<Button onClick={this.handleSubmit} />}
             />
-          ) : (
-            undefined
-          )}
+          ) : undefined} */}
         </div>
         <div className="text-analysis">
           {this.state.showScore ? (
