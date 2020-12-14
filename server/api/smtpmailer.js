@@ -13,22 +13,20 @@ router.post('/', async (req, res, next) => {
   )
 
   oauth2Client.setCredentials({
-    refresh_token: process.env.GOOGLE_REFRESH_TOKEN
+    refresh_token: req.user.refreshToken
   })
-  const accessToken = oauth2Client.getAccessToken()
+  const accessResponse = await oauth2Client.getAccessToken()
 
   const smtpTransport = nodemailer.createTransport({
     service: 'gmail',
-    tls: {
-      rejectUnauthorized: false
-    },
+    secure: true,
     auth: {
       type: 'OAuth2',
       user: req.user.email,
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
-      accessToken: accessToken
+      refreshToken: req.user.refreshToken,
+      accessToken: accessResponse.token
     }
   })
 
