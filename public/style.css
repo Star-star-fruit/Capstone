@@ -17,6 +17,11 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.myaccount {
+  font-size: 26px;
+  text-align: left;
+}
 mark {
   background-color: yellow;
   color: inherit;
@@ -60,11 +65,7 @@ mark {
   margin-right: 20%;
   padding: 10px;
 }
-/* .form2 {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-} */
+
 #button-text {
   display: flex;
   margin-right: 50%;
@@ -73,16 +74,14 @@ mark {
   display: flex;
 }
 
+.empty-account {
+  text-align: center;
+}
 .links {
   display: flex;
   margin-left: 85%;
 }
-/* .button-save {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 20%;
-  padding: 10px;
-} */
+
 .text-analysis {
   display: flex;
   justify-content: center;
@@ -123,8 +122,10 @@ mark {
   height: 25rem;
   overflow: hidden;
   box-sizing: border-box;
-  border-color: lightgray;
+  border-color: #655a7c;
   border-style: solid;
+  /* border-radius: 1.5%; */
+  border-width: 5px;
   margin-left: 15%;
   width: 60%;
   height: 30rem;
@@ -163,7 +164,7 @@ mark {
   flex-direction: center;
   text-align: center;
   border-style: solid;
-  border-color: lightgray;
+  border-color: #655a7c;
   width: 50%;
 }
 .singleDraft-table {
@@ -179,6 +180,9 @@ mark {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.datavis {
+  text-align: center;
 }
 
 /* EDITOR STYLES COPIED FROM /node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css */
