@@ -12,9 +12,9 @@ import {postNewDraft, sendNewEmail} from '../store/drafts'
 import {withRouter} from 'react-router-dom'
 import throttle from 'lodash.throttle'
 import Button from '@material-ui/core/Button'
-import Link from '@material-ui/core/Link'
 import ControlledPopup from './Popup'
 import ControlledPopup2 from './popup-email'
+import {NavLink} from 'react-router-dom'
 
 class TextEditor extends Component {
   constructor(props) {
@@ -235,7 +235,7 @@ class TextEditor extends Component {
           <div className="button-save" />
         </div>
         <div className="button-send">
-          <Link to="/drafts">
+          <div>
             <Button
               color="primary"
               variant="contained"
@@ -244,13 +244,7 @@ class TextEditor extends Component {
             >
               Send email
             </Button>
-          </Link>
-          {/* {this.emailSent ? (
-            <ControlledPopup2
-              isLoggedIn={this.props.isLoggedIn}
-              trigger={<Button onClick={this.handleSubmit} />}
-            />
-          ) : undefined} */}
+          </div>
         </div>
         <div className="text-analysis">
           {this.state.showScore ? (

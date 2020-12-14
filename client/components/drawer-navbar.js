@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex'
   },
   toolbar: {
-    paddingRight: 20, // keep right padding when drawer closed
+    paddingRight: 20,
     color: 'white'
   },
   toolbarIcon: {
@@ -117,7 +117,6 @@ const DrawerNavbar = ({handleClick, isLoggedIn}) => {
   const handleDrawerClose = () => {
     setOpen(false)
   }
-  //const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
   return (
     <div className={classes.root}>
@@ -141,15 +140,6 @@ const DrawerNavbar = ({handleClick, isLoggedIn}) => {
             <MenuIcon color="action" />
           </IconButton>
           <img src="/images/boss.png" alt="logo" width="250" />
-
-          {/* {isLoggedIn? <Typography
-          variant="h6"
-          align="center">
-            Welcome, {}
-
-          </Typography>
-          :undefined
-          } */}
         </Toolbar>
       </AppBar>
       <Drawer

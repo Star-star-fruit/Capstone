@@ -72,6 +72,11 @@ mark {
 .form {
   display: flex;
 }
+
+.links {
+  display: flex;
+  margin-left: 85%;
+}
 /* .button-save {
   display: flex;
   justify-content: space-between;

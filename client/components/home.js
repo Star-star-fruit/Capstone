@@ -16,14 +16,16 @@ const Home = props => {
   const creators = [
     {
       name: 'Prakruti PK',
-      description: 'Hello I am PK',
+      description:
+        'Crime & investigative reporter turned software developer. Tabletop gaming enthusiast from Bangalore, India, who particularly enjoys hiking, reading, and cooking.',
       imgUrl: '/images/Woman_3.jpeg',
       linkedInUrl: 'https://www.linkedin.com/in/prakruti-pk/',
       gitHubUrl: 'https://github.com/prakruti-pk'
     },
     {
       name: 'Elisa Levet',
-      description: 'Hello I am Elisa',
+      description:
+        'Mexican in New York, Nutritionist and Stand Up Comedian turned into software developer. Passionate about languages, running and singing.',
       imgUrl: '/images/Woman_2.jpeg',
       linkedInUrl: 'https://www.linkedin.com/in/elisa-levet/',
       gitHubUrl: 'https://github.com/elisalevet'
@@ -36,6 +38,14 @@ const Home = props => {
       gitHubUrl: 'https://github.com/brookeparsons'
     }
   ]
+  const privacy = {
+    privacyUrl:
+      'https://www.termsfeed.com/live/2ffb430f-50e5-4c81-9200-f3165d9cd114'
+  }
+
+  const terms = {
+    termsUrl: 'https://www.websitepolicies.com/policies/view/rvV01zsx'
+  }
 
   const useStyles = makeStyles(theme => ({
     Typography: {
@@ -93,21 +103,28 @@ const Home = props => {
       }
     },
     homeSecondaryText: {
-      textAlign: 'center'
+      textAlign: 'center',
+      fontStyle: 'italic'
     },
-    homeSecondaryWrapper: {},
+    homeSecondaryWrapper: {
+      width: '70%',
+      marginLeft: '15%',
+      padding: '1%',
+      borderStyle: 'solid',
+      borderColor: '#655A7C'
+    },
     homeAboutHeader: {
       [theme.breakpoints.down('xs')]: {
-        width: '35%'
-      },
-      [theme.breakpoints.only('sm')]: {
-        width: '25%'
-      },
-      [theme.breakpoints.only('md')]: {
         width: '20%'
       },
-      [theme.breakpoints.up('lg')]: {
+      [theme.breakpoints.only('sm')]: {
         width: '15%'
+      },
+      [theme.breakpoints.only('md')]: {
+        width: '10%'
+      },
+      [theme.breakpoints.up('lg')]: {
+        width: '7%'
       }
     },
     homeAboutCards: {
@@ -118,6 +135,13 @@ const Home = props => {
       [theme.breakpoints.only('sm')]: {
         width: '50%'
       }
+    },
+    links: {
+      width: '20%',
+      marginLeft: '80%',
+      display: 'flex',
+      padding: '2%',
+      justifyContent: 'space-around'
     }
   }))
   const classes = useStyles()
@@ -151,12 +175,14 @@ const Home = props => {
                     <Typography
                       className={classes.homePrimaryText}
                       variant={matchesSmall ? 'h5' : 'h4'}
-                      align="center"
+                      align="left"
                       color="textPrimary"
                       gutterBottom
                     >
-                      Reveal and replace the passive language in your business
-                      emails.
+                      <strong>
+                        Reveal and replace the passive language in your business
+                        emails.
+                      </strong>
                     </Typography>
                     <br />
                     <Grid container justify="center">
@@ -181,7 +207,7 @@ const Home = props => {
                   <Typography
                     //className={classes.homeSecondaryText}
                     variant="h5"
-                    align="center"
+                    align="left"
                     paragraph
                   >
                     The text editor made to dismantle the patriarchy, for women
@@ -195,7 +221,6 @@ const Home = props => {
             </div>
           </Container>
         </Box>
-
         <br />
         {//display main text over banner only when screen > 420px wide
         matchesBannerMin ? (
@@ -221,14 +246,13 @@ const Home = props => {
             </Grid>
           </div>
         )}
-
         {matchesLarge ? (
           <div> </div>
         ) : (
           <div>
             <br />
             <Typography
-              //className={classes.homeSecondaryText}
+              className={classes.homeSecondaryText}
               variant={matchesSmall ? 'h6' : 'h5'}
               align="center"
               paragraph
@@ -238,7 +262,6 @@ const Home = props => {
             </Typography>
           </div>
         )}
-
         <Paper className={classes.homeSecondaryWrapper}>
           <Typography
             className={classes.homeSecondaryText}
@@ -246,17 +269,19 @@ const Home = props => {
             align="center"
             color="textSecondary"
           >
-            About the use of passive language amoung women and nonbinary folks.
+            "It’s an unconscious habit many women have: to apologize before
+            asking a question, to apologize because they are standing at the
+            milk and sugar station at the café while someone else is waiting for
+            their turn, to apologize in all kinds of situations where an apology
+            is not warranted! We apologize simply for taking up space." ~ Tara
+            Mohr
           </Typography>
         </Paper>
-
         <br />
         <br />
-
         <Box align="center">
-          <img src="/images/about-us.png" className={classes.homeAboutHeader} />
+          <img src="/images/aboutuss.png" className={classes.homeAboutHeader} />
         </Box>
-
         <Container maxWidth="sm" className={classes.homeAboutCards}>
           <Grid container spacing={4}>
             {creators.map(creator => (
@@ -265,6 +290,14 @@ const Home = props => {
               </Grid>
             ))}
           </Grid>
+        </Container>
+        <Container className={classes.links}>
+          <div>
+            <a href={terms.termsUrl}>Terms of Service</a> {''}
+          </div>
+          <div>
+            <a href={privacy.privacyUrl}>Privacy Policy</a>
+          </div>
         </Container>
       </div>
     </React.Fragment>
