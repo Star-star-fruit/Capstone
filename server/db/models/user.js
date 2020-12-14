@@ -45,6 +45,10 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  refreshToken: {
+    type: Sequelize.STRING,
+    allowNull: true
   }
 })
 

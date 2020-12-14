@@ -28,20 +28,23 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
 
   const strategy = new GoogleStrategy(
     googleConfig,
-    (token, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       const googleId = profile.id
       const email = profile.emails[0].value
-      const imgUrl = profile.photos[0].value
+      // const imgUrl = profile.photos[0].value
       const firstName = profile.name.givenName
       const lastName = profile.name.familyName
-      const fullName = profile.displayName
+      // const fullName = profile.displayName
 
-      User.findOrCreate({
-        where: {googleId},
-        defaults: {email, imgUrl, firstName, lastName, fullName}
-      })
-        .then(([user]) => done(null, user))
-        .catch(done)
+      try {
+        const [user] = await User.findOrCreate({
+          where: {googleId},
+          defaults: {email, firstName, lastName, refreshToken}
+        })
+        done(null, user)
+      } catch (e) {
+        done(e, null)
+      }
     }
   )
 
@@ -49,7 +52,10 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
 
   router.get(
     '/',
-    passport.authenticate('google', {scope: ['email', 'profile']})
+    passport.authenticate('google', {
+      accessType: 'offline',
+      scope: ['email', 'profile', 'https://mail.google.com/']
+    })
   )
 
   router.get(
