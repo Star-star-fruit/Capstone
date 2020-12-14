@@ -33,7 +33,7 @@ const Home = props => {
     {
       name: 'Brooke Parsons',
       description:
-        'Computer science degree in the making. Began coding at at a young age. Fond of making websites for friends. Enjoys spending time writing, cooking, drawing, and playing video games.',
+        'Computer science degree in the making. Began coding at a young age. Fond of making websites for friends. Enjoys spending time writing, cooking, drawing, and playing video games.',
       imgUrl: '/images/Woman_1.jpeg',
       linkedInUrl: 'https://www.linkedin.com/in/brooke-parsons-a09959191/',
       gitHubUrl: 'https://github.com/brookeparsons'

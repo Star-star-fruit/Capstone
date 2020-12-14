@@ -77,6 +77,11 @@ mark {
 .empty-account {
   text-align: center;
 }
+
+.text-about {
+  text-align: left;
+  font-size: 15;
+}
 .links {
   display: flex;
   margin-left: 85%;
@@ -113,6 +118,7 @@ mark {
 .text-editor-parent {
   display: block;
 }
+
 .text-editor {
   display: flex;
   padding: 0.25em;
