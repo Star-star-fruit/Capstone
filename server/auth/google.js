@@ -54,6 +54,7 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
     '/',
     passport.authenticate('google', {
       accessType: 'offline',
+      prompt: 'consent',
       scope: ['email', 'profile', 'https://mail.google.com/']
     })
   )
