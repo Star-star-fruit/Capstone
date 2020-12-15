@@ -25,7 +25,7 @@ const Home = props => {
     {
       name: 'Elisa Levet',
       description:
-        'Mexican in New York, Nutritionist and Stand Up Comedian turned into software developer. Passionate about languages, running, playing music and singing.',
+        'Mexican in New York, software developer by day and stand-up comedian by night. Passionate about languages, running, playing music and singing. Tacos are always a good idea.',
       imgUrl: '/images/Woman_2.jpeg',
       linkedInUrl: 'https://www.linkedin.com/in/elisa-levet/',
       gitHubUrl: 'https://github.com/elisalevet'
