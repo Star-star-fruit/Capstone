@@ -24,7 +24,7 @@ import {Link as RLink} from 'react-router-dom'
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
-const drawerWidth = 240
+const drawerWidth = 200
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -172,7 +172,6 @@ const DrawerNavbar = ({handleClick, isLoggedIn}) => {
           <Divider />
           {isLoggedIn ? (
             <div>
-              <Divider />
               <ListItem button component={RLink} to="/drafts">
                 <ListItemIcon>
                   <ContactMailIcon />

@@ -50,7 +50,6 @@ const Home = props => {
 
   const useStyles = makeStyles(theme => ({
     Typography: {
-      //doesn't apply.
       fontFamily: 'Roboto'
     },
     homePrimaryText: {
