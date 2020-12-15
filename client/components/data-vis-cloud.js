@@ -19,14 +19,13 @@ class DataVisCloud extends React.Component {
   dataVis() {
     const size = this.props.wordData.length <= 2 ? [60, 80] : [40, 60]
     const options = {
-      colors: ['#AFC2D5', '#CCDDD3', '#ffeaa5', '#40798C'],
+      colors: ['#AFC2D5', '#CCDDD3', '#fcdd77', '#40798C', '#655A7C'],
       enableTooltip: true,
       deterministic: false,
       fontFamily: 'arial',
       fontSizes: size,
       fontStyle: 'normal',
       fontWeight: 'bold',
-      padding: 1,
       rotations: 3,
       rotationAngles: [0, 80],
       scale: 'sqrt',
@@ -38,6 +37,7 @@ class DataVisCloud extends React.Component {
       alignItems: 'center',
       justifyContent: 'center',
       border: 'solid 1px #ddd',
+
       background: '#EDE6EF'
     }
 

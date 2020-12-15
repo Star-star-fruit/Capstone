@@ -18,7 +18,10 @@ class Drafts extends React.Component {
     return (
       <React.Fragment>
         {drafts.length === 0 ? (
-          <>You have no drafts yet! Save some in the text editor. </>
+          <h3 className="empty-account">
+            You have no drafts yet!
+            <br /> Save some in the text editor.{' '}
+          </h3>
         ) : (
           <div className="table">
             <Table className="myaccount-table">
