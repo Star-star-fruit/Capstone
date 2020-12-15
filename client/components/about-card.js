@@ -20,7 +20,10 @@ export default function AboutCard(props) {
           <CardMedia component="img" image={imgUrl} title={name} />
           <CardContent>
             <h3> {name} </h3>
-            <p> {description}</p>
+            <p>
+              {' '}
+              <div className="text-about"> {description} </div>
+            </p>
           </CardContent>
           <CardActions>
             <Button size="small" color="primary" href={linkedInUrl}>

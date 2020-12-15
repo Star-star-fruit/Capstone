@@ -25,14 +25,15 @@ const Home = props => {
     {
       name: 'Elisa Levet',
       description:
-        'Mexican in New York, Nutritionist and Stand Up Comedian turned into software developer. Passionate about languages, running and singing.',
+        'Mexican in New York, software developer by day and stand-up comedian by night. Passionate about languages, running, playing music and singing. Tacos are always a good idea.',
       imgUrl: '/images/Woman_2.jpeg',
       linkedInUrl: 'https://www.linkedin.com/in/elisa-levet/',
       gitHubUrl: 'https://github.com/elisalevet'
     },
     {
       name: 'Brooke Parsons',
-      description: 'Hello I am Brooke',
+      description:
+        'Computer science degree in the making. Began coding at a young age. Fond of making websites for friends. Enjoys spending time writing, cooking, drawing, and playing video games.',
       imgUrl: '/images/Woman_1.jpeg',
       linkedInUrl: 'https://www.linkedin.com/in/brooke-parsons-a09959191/',
       gitHubUrl: 'https://github.com/brookeparsons'
@@ -101,6 +102,10 @@ const Home = props => {
       [theme.breakpoints.down('350')]: {
         width: '122%'
       }
+    },
+    homeSecondaryTextA: {
+      textAlign: 'left',
+      marginLeft: '33px'
     },
     homeSecondaryText: {
       textAlign: 'center',
@@ -196,6 +201,7 @@ const Home = props => {
                         </Button>
                       </Grid>
                     </Grid>
+                    <br />
                   </div>
                 ) : (
                   <span />
@@ -205,7 +211,7 @@ const Home = props => {
                 <div>
                   <br />
                   <Typography
-                    //className={classes.homeSecondaryText}
+                    className={classes.homeSecondaryTextA}
                     variant="h5"
                     align="left"
                     paragraph
