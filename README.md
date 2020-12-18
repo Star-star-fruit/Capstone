@@ -13,5 +13,5 @@ Our tech stack consists of the usual suspects - Node, Express, React, Redux, and
 
 Other libraries that helped bring our user stories to life are react-draft-wysiwyg (a rich text editor based on Draft.js), mark.js for highlighting, react-wordcloud for data visualization, and the indispensable Material UI for styling.
 
-![Database Schema]
+Database Schema
 <img src=“./db.jpg”>
